@@ -22,8 +22,25 @@ let UserSchema = new Schema({
         return ret;
     }
 }});
+let NoticesSchema = new Schema({
+    id:{type:String},
+    avatar:{type:String},
+    title:{type:String},
+    datetime:{type:String},
+    read:{type:String},
+    type:{type:String}
+},{
+    timestamps:true,
+    toJSON:{
+        transform(doc,ret){
+            return ret
+        }
+    }
+})
 //创建User模型 可以操作数据库
 const UserModel = connection.model('User',UserSchema);
+const Notices = connection.model('Notices',NoticesSchema)
 module.exports ={
-    UserModel
+    UserModel,
+    Notices
 }
