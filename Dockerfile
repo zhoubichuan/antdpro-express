@@ -11,12 +11,12 @@ COPY . /usr/src/node/antdpro-express
 
 #编译运行node项目，使用npm安装程序的所有依赖,利用taobao的npm安装
 
-WORKDIR /usr/src/node/website
+WORKDIR /usr/src/node/antdpro-express
 RUN npm install --registry=https://registry.npm.taobao.org
 RUN npm install nodemon
 
 #暴露container的端口
-EXPOSE 8888
+EXPOSE 9000
 
 #运行命令
 

@@ -1,6 +1,6 @@
 let express = require("express");
 let router = express.Router();
-let { UserModel,Notices } = require("../model");
+let { UserModel, Notices } = require("../model");
 let jwt = require("jsonwebtoken");
 let config = require("../config");
 let checkLogin = require("../checkLogin");
@@ -44,37 +44,35 @@ router.put("/user", async (req, res) => {
  */
 // router.get('/user', checkLogin,checkPermission('admin','user'),async (req, res) => {
 router.get("/currentUser", async (req, res) => {
-//   let {
-//     current = 1,
-//     pageSize = 10,
-//     sorter = 1,
-//     filter = {},
-//     ...query
-//   } = req.query;
-//   if (sorter) {
-//     sorter = sorter ? JSON.parse(sorter) : {};
-//     for (let key in sorter) {
-//       sorter[key] = sorter[key] === "ascend" ? 1 : -1;
-//     }
-//   }
-//   if (filter) {
-//     filter = filter ? JSON.parse(filter) : {};
-//     for (let key in filter) {
-//       if (filter[key]) query[key] = filter[key];
-//     }
-//   }
-//   console.log(query, current, pageSize);
-
-//   current = parseInt(current);
-//   pageSize = parseInt(pageSize);
-//   if (query && query.username) {
-//     query.username = new RegExp(query.username);
-//   }
-//   let total = await UserModel.countDocuments(query);
+  let {
+    current = 1,
+    pageSize = 10,
+    sorter,
+    filter,
+    ...query
+  } = req.query;
+  if (sorter) {
+    sorter = sorter ? JSON.parse(sorter) : {};
+    for (let key in sorter) {
+      sorter[key] = sorter[key] === "ascend" ? 1 : -1;
+    }
+  }
+  if (filter) {
+    filter = filter ? JSON.parse(filter) : {};
+    for (let key in filter) {
+      if (filter[key]) query[key] = filter[key];
+    }
+  }
+  current = parseInt(current);
+  pageSize = parseInt(pageSize);
+  if (query && query.username) {
+    query.username = new RegExp(query.username);
+  }
+  let total = await UserModel.countDocuments(query);
   let users = await UserModel.find(query)
-    // .sort(sorter)
-    // .skip((current - 1) * pageSize)
-    // .limit(pageSize);
+    .sort(sorter)
+    .skip((current - 1) * pageSize)
+    .limit(pageSize);
   let dataSource = users.map((item) => item.toJSON());
   const result = {
     data: dataSource,
