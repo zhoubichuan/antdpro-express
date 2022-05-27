@@ -1,4 +1,5 @@
 let mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false)
 const Schema = mongoose.Schema;
 let config = require('./config');
 //连接mongodb数据库
