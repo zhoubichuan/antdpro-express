@@ -1,8 +1,15 @@
-FROM node:10.15.3         
-LABEL maintainer="zhoubichuan@icloud.com" 
-RUN mkdir -p /usr/src/node/antdpro-express
-WORKDIR /usr/src/node/antdpro-express  
-COPY . /usr/src/node/antdpro-express             
-RUN npm install --registry=https://registry.npm.taobao.org 
+#设置构建的基础镜像
+FROM node:16.5.0
+RUN mkdir -p /project/
+WORKDIR /project/
+COPY package.json /project/
+#设置npm下载依赖来源为淘宝源
+RUN npm config set registry https://registry.npm.taobao.org
+RUN rm -rf node_modules && npm install -g npm && cd /project && npm install nodemon -g
+#安装项目依赖
+RUN npm install
+COPY . /project/
+#在启动镜像时执行启动项目的命令
+CMD npm run dev
+#暴露端口用于外部访问
 EXPOSE 4000
-CMD [ "npm", "start"]                      
