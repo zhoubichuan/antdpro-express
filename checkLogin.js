@@ -1,7 +1,7 @@
 let config = require('./config');
 let jwt = require('jsonwebtoken');
-let { UNAUTHORIZED } = require( "http-status-codes");
-const checkLogin = async (req,res,next) => {
+let { UNAUTHORIZED } = require("http-status-codes");
+const checkLogin = async (req, res, next) => {
     let authorization = req.headers['authorization'];
     if (authorization) {
         try {
@@ -9,10 +9,16 @@ const checkLogin = async (req,res,next) => {
             req.user = user;
             return next();
         } catch (err) {
-            return res.status(UNAUTHORIZED).send({});
+            return res.status(UNAUTHORIZED).send({
+                status: 'error',
+                message: '请先登录'
+            });
         }
     } else {
-        return res.status(UNAUTHORIZED).send({});
+        return res.status(UNAUTHORIZED).send({
+            status: 'error',
+            message: '请先登录'
+        });
     }
 };
 module.exports = checkLogin;
