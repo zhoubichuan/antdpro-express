@@ -16,8 +16,8 @@ jobs:
         REMOTE_HOST: ${{ secrets.HOST }}
         REMOTE_USER: ${{ secrets.USER }}
         SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_KEY }}
-        SOURCE: "[部署内容路径(以项目目录为根目录)]"
-        TARGET: "[服务器部署位置的绝对路径]"
+        SOURCE: "/"
+        TARGET: "/usr/zhoubichuan/antdpro-express"
 
     - name: Prepare For antdpro-express
       uses: webfactory/ssh-agent@v0.5.0
