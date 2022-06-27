@@ -9,7 +9,5 @@ RUN rm -rf node_modules && npm install -g npm && cd /project
 #安装项目依赖
 RUN npm install
 COPY . /project/
-#在启动镜像时执行启动项目的命令
 CMD npm run dev
-#暴露端口用于外部访问
-EXPOSE 4000
+EXPOSE 7000

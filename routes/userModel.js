@@ -77,7 +77,7 @@ router.post('/login/account', async (req, res) => {
   if (dbUser) {
     let user = dbUser.toJSON();
     let token = jwt.sign(user, config.secret, { expiresIn: '1h' });
-    return res.send({ status: 'ok', token, type: 'account', access: user.access });
+    return res.send({ status: 'success', token, type: 'account', access: user.access });
   } else {
     return res.send({
       status: 'error',
