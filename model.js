@@ -92,16 +92,64 @@ let AdvancedFormSchema = new Schema({
         }
     }
 })
+
+let ProfileSchema = new Schema({
+    approver: { type: String },
+    approver2: { type: String },
+    dateRange: { type: String },
+    dateRange2: { type: String },
+    members: { type: Array },
+    name: { type: String },
+    name2: { type: String },
+    owner: { type: String },
+    owner2: { type: String },
+    type: { type: String },
+    type2: { type: String },
+    url: { type: String },
+    url2: { type: String }
+}, {
+    timestamps: true,
+    toJSON: {
+        transform(doc, ret) {
+            return ret
+        }
+    }
+})
+let RuleSchema = new Schema({
+    key: { type: String },
+    disabled: { type: String },
+    href: { type: String },
+    avatar: { type: String },
+    name: { type: Array },
+    owner: { type: String },
+    desc: { type: String },
+    callNo: { type: String },
+    status: { type: String },
+    updatedAt: { type: String },
+    createdAt: { type: String },
+    progress: { type: String },
+}, {
+    timestamps: true,
+    toJSON: {
+        transform(doc, ret) {
+            return ret
+        }
+    }
+})
 //创建User模型 可以操作数据库
 const UserModel = connection.model('User', UserSchema);
 const NoticeModel = connection.model('Notices', NoticeSchema)
 const ActiveModel = connection.model('Active', ActiveSchema)
 const FormModel = connection.model('FormModel', FormSchema)
 const AdvancedFormModel = connection.model('AdvancedFormModel', AdvancedFormSchema)
+const ProfileModel = connection.model('ProfileModel',ProfileSchema)
+const RuleModel = connection.model('RuleModel',RuleSchema)
 module.exports = {
     UserModel,
     NoticeModel,
     FormModel,
     AdvancedFormModel,
-    ActiveModel
+    ActiveModel,
+    ProfileModel,
+    RuleModel
 }

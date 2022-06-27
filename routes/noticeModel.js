@@ -489,22 +489,22 @@ router.get('/fake_workplace_chart_data', async (req, res) => {
   });
 });
 
-// router.get('/fake_list', async (req, res) => {
-//   res.send({
-//     data: {
-//       visitData,
-//       visitData2,
-//       salesData,
-//       searchData,
-//       offlineData,
-//       offlineChartData,
-//       salesTypeData,
-//       salesTypeDataOnline,
-//       salesTypeDataOffline,
-//       radarData,
-//     },
-//     success: true
-//   });
-// });
+router.get('/fake_list', async (req, res) => {
+  res.send({
+    data: {
+      visitData,
+      visitData2,
+      salesData,
+      searchData,
+      offlineData,
+      offlineChartData,
+      salesTypeData,
+      salesTypeDataOnline,
+      salesTypeDataOffline,
+      radarData,
+    },
+    success: true
+  });
+});
 
 module.exports = router;

@@ -8,8 +8,8 @@ let checkPermission = require("../checkPermission");
 // 注册用户
 router.post('/user', async (req, res) => {
   let { username, password, email, access } = req.body;
-  let target = await UserModel.find({username})
-  if(target.length){
+  let target = await UserModel.find({ username })
+  if (target.length) {
     res.send({ status: 'error', message: '用户名重复' });
     return
   }
@@ -146,7 +146,7 @@ router.get('/currentUser', async (req, res) => {
       res.status(401).send({});
     }
   } else {
-    res.status(401).send({});
+    res.status(401).send({ status: 'error' });
   }
 });
 
