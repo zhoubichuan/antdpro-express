@@ -31,8 +31,8 @@ jobs:
             cd /usr/src/zhoubichuan/uat/antdpro-express
             export NODE_HOME=/usr/bin/node
             export PATH=$PATH:$NODE_HOME/bin
-            npm install cnpm
-            cnpm i
-            cnpm i pm2
+            yum -y install yarn
+            yarn install
+            yarn add pm2
             pm2 delete antdpro-express
             pm2 start --name antdpro-express npm -- run dev
