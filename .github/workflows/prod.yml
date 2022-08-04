@@ -1,30 +1,40 @@
-name: prod # 名称
+name: prod
 on:
   push:
     branches:
-      - master # 只在 master 上 push 操作触发部署
-    paths-ignore:  # 下列文件的变更不触发部署，可以自行添加
-      - README.md      
+      - master
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest # 使用 ubuntu 系统镜像运行自动化脚本
-    steps: # 自动化步骤
-    - name: Checkout  # 步骤名称
-      uses: actions/checkout@master # 使用别人包装好的步骤镜像
-    - name: Deploy file to Server
-      uses: wlixcc/SFTP-Deploy-Action@v1.0
-      with:  
-        username: ${{ secrets.USER }} # 引用配置，用户名称
-        server: ${{ secrets.HOST }} # 引用配置，服务器 IP
-        port: ${{ secrets.PORT }}
-        password: ${{ secrets.PASSWORD }}
-        local_path: './*' 
-        remote_path: '/usr/src/zhoubichuan/prod/antdpro-experss'
-    - name: Server Start    
-      uses: appleboy/ssh-action@master
-      with:
-        username: ${{ secrets.USER }} # 引用配置，用户名称
-        server: ${{ secrets.HOST }} # 引用配置，服务器 IP
-        port: ${{ secrets.PORT }}
-        password: ${{ secrets.PASSWORD }}
-        script: sh /usr/src/zhoubichuan/prod/antdpro-experss/server.sh # 执行脚本命令
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.5.0"
+      - name: yarn
+        run: yarn
+      - name: copy file  via ssh key
+        uses: appleboy/scp-action@master
+        with:
+          source: "./*"
+          host: ${{ secrets.HOST }}
+          target: "/usr/src/zhoubichuan/prod/antdpro-express"
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+      - name: Executing remote ssh commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          port: ${{ secrets.PORT }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd /usr/src/zhoubichuan/prod/antdpro-express
+            export NODE_HOME=/usr/bin/node
+            export PATH=$PATH:$NODE_HOME/bin
+            yarn install
+            yarn add pm2
+            pm2 delete antdpro-express
+            pm2 start --name antdpro-express yarn -- run dev
