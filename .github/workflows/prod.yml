@@ -31,6 +31,6 @@ jobs:
             cd /usr/src/zhoubichuan/prod/antdpro-express
             export NODE_HOME=/usr/bin/node
             export PATH=$PATH:$NODE_HOME/bin
-            npm install # 安装项目依赖
+            npm install
             pm2 delete antdpro-express
             pm2 start --name antdpro-express npm -- run dev
