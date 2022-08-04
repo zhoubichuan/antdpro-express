@@ -1,11 +1,8 @@
-# 触发脚本的条件，develop分支push代码的时候
-name: node // 流程名称
+name: prod
 on:
   push:
-    branches: [ master ]   //当node分支提交成功开始执行
-  pull_request:
-    branches: [ master ]
-
+    branches:
+      - master
 # 要执行的任务
 jobs:
   # runs-on 指定job任务运行所需要的虚拟机环境（必填）
