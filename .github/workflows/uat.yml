@@ -23,6 +23,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
       - name: Executing remote ssh commands
         uses: appleboy/ssh-action@master
+      - name: yarn
+        run: yarn
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
@@ -31,8 +33,7 @@ jobs:
             cd /usr/src/zhoubichuan/uat/antdpro-express
             export NODE_HOME=/usr/bin/node
             export PATH=$PATH:$NODE_HOME/bin
-            yum -y install yarn
             yarn install
             yarn add pm2
             pm2 delete antdpro-express
-            pm2 start --name antdpro-express npm -- run dev
+            pm2 start --name antdpro-express yarn -- run dev
