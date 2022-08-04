@@ -17,7 +17,7 @@ jobs:
         with:
           source: "./*"
           host: ${{ secrets.HOST }}
-          target: "/usr/src/zhoubichuan/prod/"
+          target: "/usr/src/zhoubichuan/prod/antdpro-express"
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
