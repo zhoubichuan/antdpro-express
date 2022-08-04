@@ -89,14 +89,14 @@ jobs:
           port: ${{ secrets.PORT }}
           connect_timeout: 20s
           first_ssh: |
-            rm -rf /usr/antdpro-express
-            mkdir -p /usr/antdpro-express
+            rm -rf /usr/src/zhoubichuan/prod/antdpro-express
+            mkdir -p /usr/src/zhoubichuan/prod/antdpro-express
           scp: |
-            'antdpro-express.zip' => /usr/antdpro-express
+            'antdpro-express.zip' => /usr/src/zhoubichuan/prod/antdpro-express
           last_ssh: |
-            cd /usr/antdpro-express
+            cd /usr/src/zhoubichuan/prod/antdpro-express
             unzip antdpro-express.zip
-            cd /usr/antdpro-express
+            cd /usr/src/zhoubichuan/prod/antdpro-express
             npm i
 #            pm2 start ./src/main.js
             pm2 restart ./app.js
