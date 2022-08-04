@@ -2,7 +2,7 @@ name: uat
 on:
   push:
     branches:
-      - uat
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,7 +15,7 @@ jobs:
       - name: copy file  via ssh key
         uses: appleboy/scp-action@master
         with:
-          source: "*"
+          source: "./*"
           host: ${{ secrets.HOST }}
           target: "/usr/src/zhoubichuan/uat/"
           port: ${{ secrets.PORT }}
@@ -31,6 +31,6 @@ jobs:
             cd /usr/src/zhoubichuan/uat/antdpro-express
             export NODE_HOME=/usr/bin/node
             export PATH=$PATH:$NODE_HOME/bin
-            npm install # 安装项目依赖
+            npm install
             pm2 delete antdpro-express
             pm2 start --name antdpro-express npm -- run dev
