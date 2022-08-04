@@ -1,38 +1,105 @@
-name: prod
+# 触发脚本的条件，develop分支push代码的时候
+name: node // 流程名称
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]   //当node分支提交成功开始执行
+  pull_request:
+    branches: [ master ]
+
+# 要执行的任务
 jobs:
-  build:
+  # runs-on 指定job任务运行所需要的虚拟机环境（必填）
+  # build:
+  #   runs-on: ubuntu-latest
+
+  #   # 获取源码
+  #   steps:
+  #     # 使用action库  actions/checkout获取源码
+  #     - name: action
+  #       uses: actions/checkout@v1
+
+  #     - name: node v14.17.0
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         # 选择要使用的 node 版本
+  #         node-version: "v14.17.0"
+
+      # - name: npm install ⏬   // 找到vue项目安装依赖开始打包
+      #   run: |
+      #     cd antdpro-express/vue3
+      #     npm i
+      #     npm run build
+
+      # - name: 前端vue文件打包📦
+      #   run: |
+      #     cd antdpro-express/vue3/dist 
+      #     sudo apt-get install unzip // 先压缩文件
+      #     zip -r dist.zip ./* -r     // 压缩dist目录
+      #     ls
+
+      # # 上传打包文件到远程服务器 腾讯
+      # - name: Deploy——TX 🚀
+      #   uses: cross-the-world/ssh-scp-ssh-pipelines@latest # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个安全拷贝(security copy)操作
+      #   env:
+      #     WELCOME: "ssh scp ssh pipelines"
+      #     LASTSSH: "Doing something after copying"
+      #   with:
+      #     host: ${{ secrets.TX_HOST }}
+      #     user: ${{ secrets.TX_USER }}
+      #     pass: ${{ secrets.TX_PASS }}
+      #     port: ${{ secrets.TX_PORT }}
+      #     connect_timeout: 10s
+      #     first_ssh: |
+      #       rm -rf /usr/share/nginx/html
+      #       mkdir -p /usr/share/nginx/html
+      #     scp: |
+      #       'node-koa-pm2/pmaoblog/dist/dist.zip' => /usr/share/nginx/html
+      #     last_ssh: |
+      #       cd /usr/share/nginx/html
+      #       unzip dist.zip
+      #       rm -rf dist.zip
+            
+  node:
     runs-on: ubuntu-latest
+
+    # 获取源码
     steps:
-      - uses: actions/checkout@v1
-      - name: Install Node.js
+      # 使用action库  actions/checkout获取源码
+      - name: action
+        uses: actions/checkout@v1
+
+      - name: node v14.17.0
         uses: actions/setup-node@v1
         with:
-          node-version: "16.5.0"
-      - name: yarn
-        run: yarn
-      - name: copy file  via ssh key
-        uses: appleboy/scp-action@master
+          # 选择要使用的 node 版本
+          node-version: "v14.17.0"
+
+      - name: zip 📦
+        run: |
+          sudo apt-get install unzip
+          zip -r antdpro-express.zip antdpro-express/
+
+      # 启动node后台服务
+      - name: node部署 🚀🚀
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest # 因为构建之后，需要把代码上传到服务器上，所以需要连接到ssh，并且做一个安全拷贝(security copy)操作
+        env:
+          WELCOME: "ssh scp ssh pipelines"
+          LASTSSH: "Doing something after copying"
         with:
-          source: "./*"
           host: ${{ secrets.HOST }}
-          target: "/usr/src/zhoubichuan/prod/antdpro-express"
+          user: ${{ secrets.USER }}
+          pass: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
-      - name: Executing remote ssh commands
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          port: ${{ secrets.PORT }}
-          username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
-          script: |
-            cd /usr/src/zhoubichuan/prod/antdpro-express
-            yarn install
-            yarn add pm2
-            pm2 delete antdpro-express
-            pm2 start --name antdpro-express yarn -- run dev
+          connect_timeout: 20s
+          first_ssh: |
+            rm -rf /usr/antdpro-express
+            mkdir -p /usr/antdpro-express
+          scp: |
+            'antdpro-express.zip' => /usr/antdpro-express
+          last_ssh: |
+            cd /usr/antdpro-express
+            unzip antdpro-express.zip
+            cd /usr/antdpro-express
+            npm i
+#            pm2 start ./src/main.js
+            pm2 restart ./app.js
