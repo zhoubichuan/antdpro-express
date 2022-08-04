@@ -32,8 +32,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd /usr/src/zhoubichuan/prod/antdpro-express
-            export NODE_HOME=/usr/bin/node
-            export PATH=$PATH:$NODE_HOME/bin
             yarn install
             yarn add pm2
             pm2 delete antdpro-express
