@@ -12,12 +12,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "16.5.0"
+      - name: yarn
+        run: yarn
       - name: copy file  via ssh key
         uses: appleboy/scp-action@master
         with:
           source: "./*"
           host: ${{ secrets.HOST }}
-          target: "/usr/src/zhoubichuan/prod/antdpro-express"
+          target: "/usr/src/zhoubichuan/prod/"
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
@@ -31,6 +33,7 @@ jobs:
             cd /usr/src/zhoubichuan/prod/antdpro-express
             export NODE_HOME=/usr/bin/node
             export PATH=$PATH:$NODE_HOME/bin
-            npm install
+            yarn install
+            yarn add pm2
             pm2 delete antdpro-express
-            pm2 start --name antdpro-express npm -- run dev
+            pm2 start --name antdpro-express yarn -- run dev

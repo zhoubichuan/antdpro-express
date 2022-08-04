@@ -2,7 +2,7 @@ name: uat
 on:
   push:
     branches:
-      - master
+      - uat
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,10 +21,10 @@ jobs:
           port: ${{ secrets.PORT }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASSWORD }}
-      - name: Executing remote ssh commands
-        uses: appleboy/ssh-action@master
       - name: yarn
         run: yarn
+      - name: Executing remote ssh commands
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
