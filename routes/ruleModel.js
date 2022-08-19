@@ -18,19 +18,22 @@ router.post('/rule', async (req, res) => {
     desc = 'asdfa',
     callNo = '100',
     status = '200',
-    progress = '50'
+    progress = '50',
+    createdAt = "2022-08-10T02:18:45.682Z",
+    updatedAt = "2022-08-10T02:18:45.682Z"
   } = req.body;
   let target = await RuleModel.find({ name })
   if (target.length) {
     res.send({ status: 'error', message: '规则重复' });
     return
   }
-  let result = await RuleModel.create({ key, disabled, href, avatar, name, owner, desc, callNo, status, progress });
+  let result = await RuleModel.create({ key, disabled, href, avatar, name, owner, desc, callNo, status, progress, createdAt, updatedAt });
   return res.json(result);
 });
 
 //查询
-router.get('/rule', checkLogin, async (req, res) => {
+// router.get('/rule', checkLogin, async (req, res) => {
+  router.get('/rule', async (req, res) => {
   let { current = 1, pageSize = 10, email, sorter, filter, ...query } = req.query;
   if (sorter) {
     sorter = sorter ? JSON.parse(sorter) : {};

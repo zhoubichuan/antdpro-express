@@ -136,6 +136,87 @@ let RuleSchema = new Schema({
         }
     }
 })
+let RuleSchema1 = new Schema({
+    code: { type: Number },
+    work: { type: String },
+    area: { type: Number },
+    mileage: { type: Number },
+    time: { type: String },
+    workStatus: { type: Number },
+    assessStatus: { type: Number },
+    option: { type: Array },
+}, {
+    timestamps: true,
+    toJSON: {
+        transform(doc, ret) {
+            return ret
+        }
+    }
+})
+let RuleSchema2 = new Schema({
+    code: { type: Number },
+    device: { type: String },
+    content: { type: String },
+    task: { type: String },
+    count: { type: Number },
+    time: { type: String },
+    type: { type: Number },
+}, {
+    timestamps: true,
+    toJSON: {
+        transform(doc, ret) {
+            return ret
+        }
+    }
+})
+let RuleSchema3 = new Schema({
+    code: { type: Number },
+    device: { type: String },
+    content: { type: String },
+    type: { type: Number },
+    grade: { type: Number },
+    time: { type: String },
+    status: { type: Number },
+}, {
+    timestamps: true,
+    toJSON: {
+        transform(doc, ret) {
+            return ret
+        }
+    }
+})
+let RuleSchema4 = new Schema({
+    code: { type: Number },
+    name: { type: String },
+    type: { type: String },
+    machine: { type: String },
+    time: { type: String },
+    status: { type: Number },
+    remark: { type: String },
+}, {
+    timestamps: true,
+    toJSON: {
+        transform(doc, ret) {
+            return ret
+        }
+    }
+})
+let RuleSchema5 = new Schema({
+    code: { type: Number },
+    name: { type: String },
+    type: { type: String },
+    count: { type: Number },
+    number: { type: Number },
+    status: { type: Number },
+    remark: { type: String },
+}, {
+    timestamps: true,
+    toJSON: {
+        transform(doc, ret) {
+            return ret
+        }
+    }
+})
 //创建User模型 可以操作数据库
 const UserModel = connection.model('User', UserSchema);
 const NoticeModel = connection.model('Notices', NoticeSchema)
@@ -144,6 +225,11 @@ const FormModel = connection.model('FormModel', FormSchema)
 const AdvancedFormModel = connection.model('AdvancedFormModel', AdvancedFormSchema)
 const ProfileModel = connection.model('ProfileModel',ProfileSchema)
 const RuleModel = connection.model('RuleModel',RuleSchema)
+const RuleModel1 = connection.model('RuleModel1',RuleSchema1)
+const RuleModel2= connection.model('RuleModel2',RuleSchema2)
+const RuleModel3 = connection.model('RuleModel3',RuleSchema3)
+const RuleModel4 = connection.model('RuleModel4',RuleSchema4)
+const RuleModel5 = connection.model('RuleModel5',RuleSchema5)
 module.exports = {
     UserModel,
     NoticeModel,
@@ -151,5 +237,10 @@ module.exports = {
     AdvancedFormModel,
     ActiveModel,
     ProfileModel,
-    RuleModel
+    RuleModel,
+    RuleModel1,
+    RuleModel2,
+    RuleModel3,
+    RuleModel4,
+    RuleModel5
 }
