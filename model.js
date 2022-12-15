@@ -3,7 +3,11 @@ mongoose.set('useFindAndModify', false)
 const Schema = mongoose.Schema;
 let config = require('./config');
 //连接mongodb数据库
+console.log(process.env.MODE_USER,process.env.MODE_PWD)
 let connection = mongoose.createConnection(config.dbUrl, {
+    authSource: 'admin', // 权限认证（添加这个属性！！！！！）
+    user: 'root',
+    pass: 'ZBCzbc123',
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -217,6 +221,19 @@ let RuleSchema5 = new Schema({
         }
     }
 })
+let TagsSchema = new Schema({
+    code: { type: Number },
+    name: { type: String },
+    type: { type: String },
+    value: { type: Number },
+}, {
+    timestamps: true,
+    toJSON: {
+        transform(doc, ret) {
+            return ret
+        }
+    }
+})
 //创建User模型 可以操作数据库
 const UserModel = connection.model('User', UserSchema);
 const NoticeModel = connection.model('Notices', NoticeSchema)
@@ -230,6 +247,7 @@ const RuleModel2= connection.model('RuleModel2',RuleSchema2)
 const RuleModel3 = connection.model('RuleModel3',RuleSchema3)
 const RuleModel4 = connection.model('RuleModel4',RuleSchema4)
 const RuleModel5 = connection.model('RuleModel5',RuleSchema5)
+const Tags = connection.model('Tags',TagsSchema)
 module.exports = {
     UserModel,
     NoticeModel,
@@ -242,5 +260,6 @@ module.exports = {
     RuleModel2,
     RuleModel3,
     RuleModel4,
-    RuleModel5
+    RuleModel5,
+    Tags
 }

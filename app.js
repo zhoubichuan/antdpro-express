@@ -1,37 +1,16 @@
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
-let userModel = require('./routes/userModel');
-let noticeModel = require('./routes/noticeModel');
-let formModel = require('./routes/formModel');
-let profileModel = require('./routes/profileModel');
-let ruleModel = require('./routes/ruleModel');
-let ruleModel1 = require('./routes/ruleModel1');
-let ruleModel2 = require('./routes/ruleModel2');
-let ruleModel3 = require('./routes/ruleModel3');
-let ruleModel4 = require('./routes/ruleModel4');
-let ruleModel5 = require('./routes/ruleModel5');
+var routes = require('./routes/index')
 const cors = require('cors')
 app.use(cors())
 app.use(bodyParser.json()); //可以接收JSON格式的请求体
 app.use(bodyParser.urlencoded({
   extended: true
 })); //可以接收表单格式的请求体
-
-app.use('/api', userModel);
-
-app.use('/api', noticeModel);
-
-app.use('/api', formModel);
-
-app.use('/api', profileModel);
-
-app.use('/api', ruleModel);
-app.use('/api', ruleModel1);
-app.use('/api', ruleModel2);
-app.use('/api', ruleModel3);
-app.use('/api', ruleModel4);
-app.use('/api', ruleModel5);
+Object.keys(routes).forEach(key => {
+  app.use('/api', routes[key])
+})
 // 错误处理
 app.use((err, req, res, next) => {
   err.statusCode = err.statusCode || 500
