@@ -8,19 +8,14 @@ let checkPermission = require("../checkPermission");
 let moment = require("moment");
 // 添加规则
 router.post("/rule", async (req, res) => {
-  let {
-    name = "TradeCode",
-    owner = "张三",
-    desc = "asdfa",
-    createdAt = "2022-08-10T02:18:45.682Z",
-    updatedAt = "2022-08-10T02:18:45.682Z",
-  } = req.body;
-  let currentId = null;
-  let preRow = await RuleModel.find({}).sort({ _id: -1 }).limit(1);
+  let { name = "TradeCode", type = "张三", value = "asdfa" } = req.body;
+  let currentId = "1";
+  let preRow = await RuleModel.find({}).sort({ updatedAt: -1 }).limit(1);
   if (!preRow || !preRow.id) {
-    currentId = 1;
+    currentId = "0000001";
   } else {
-    currentId += preRow.id;
+    currentId = String(Number(preRow.id) + 1);
+    currentId = "0".repeat(currentId.length - 7) + currentId;
   }
   let target = await RuleModel.find({ name });
   if (target.length) {
@@ -29,26 +24,21 @@ router.post("/rule", async (req, res) => {
   }
   let result = await RuleModel.create({
     id: currentId,
-    name:name[0],
-    owner,
-    desc,
+    name,
+    type,
+    value,
   });
   return res.json(result);
 });
 // 更新规则
 router.put("/rule", async (req, res) => {
-  let {
-    id = 1,
-    name = "TradeCode",
-    owner = "张三",
-    desc = "asdfa",
-  } = req.body;
+  let { id = 1, name = "TradeCode", type = "张三", value = "asdfa" } = req.body;
   let target = await RuleModel.find({ id });
   if (!target.length) {
     res.send({ status: "error", message: "没有找到" });
     return;
   }
-  let result = await RuleModel.update({ name }, { owner }, { desc });
+  let result = await RuleModel.updateMany({ name ,type , value });
   return res.json(result);
 });
 // 删除规则
@@ -68,7 +58,6 @@ router.get("/rule", async (req, res) => {
   let {
     current = 1,
     pageSize = 10,
-    email,
     sorter,
     filter,
     ...query
