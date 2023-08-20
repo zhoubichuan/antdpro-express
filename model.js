@@ -140,8 +140,8 @@ let ProfileSchema = new Schema(
 let RuleSchema = new Schema(
   {
     name: { type: String },
-    owner: { type: String },
-    desc: { type: String },
+    type: { type: String },
+    value: { type: String },
     id: { type: String },
     updatedAt: { type: Number },
     createdAt: { type: Number },
