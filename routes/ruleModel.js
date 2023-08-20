@@ -9,16 +9,9 @@ let moment = require("moment");
 // 添加规则
 router.post("/rule", async (req, res) => {
   let {
-    key = 1,
-    disabled = true,
-    href = "https://ant.design",
-    avatar = "https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png",
     name = "TradeCode",
     owner = "张三",
     desc = "asdfa",
-    callNo = "100",
-    status = "200",
-    progress = "50",
     createdAt = "2022-08-10T02:18:45.682Z",
     updatedAt = "2022-08-10T02:18:45.682Z",
   } = req.body;
@@ -35,19 +28,10 @@ router.post("/rule", async (req, res) => {
     return;
   }
   let result = await RuleModel.create({
-    key,
     id: currentId,
-    disabled,
-    href,
-    avatar,
-    name,
+    name:name[0],
     owner,
     desc,
-    callNo,
-    status,
-    progress,
-    createdAt,
-    updatedAt,
   });
   return res.json(result);
 });
@@ -55,17 +39,9 @@ router.post("/rule", async (req, res) => {
 router.put("/rule", async (req, res) => {
   let {
     id = 1,
-    disabled = true,
-    href = "https://ant.design",
-    avatar = "https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png",
     name = "TradeCode",
     owner = "张三",
     desc = "asdfa",
-    callNo = "100",
-    status = "200",
-    progress = "50",
-    createdAt = "2022-08-10T02:18:45.682Z",
-    updatedAt = "2022-08-10T02:18:45.682Z",
   } = req.body;
   let target = await RuleModel.find({ id });
   if (!target.length) {
