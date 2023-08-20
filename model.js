@@ -3,7 +3,6 @@ mongoose.set('useFindAndModify', false)
 const Schema = mongoose.Schema;
 let config = require('./config');
 //连接mongodb数据库
-console.log(process.env.MODE_USER,process.env.MODE_PWD)
 let connection = mongoose.createConnection(config.dbUrl, {
     authSource: 'admin', // 权限认证（添加这个属性！！！！！）
     user: 'root',
