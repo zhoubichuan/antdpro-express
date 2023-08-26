@@ -147,7 +147,7 @@ let RuleSchema = new Schema(
     createdAt: { type: Number },
   },
   {
-    timestamps: () => Math.floor(Date.now() / 1000) ,
+    timestamps: () => Math.floor(Date.now() / 1000),
     toJSON: {
       transform(doc, ret) {
         return ret;
@@ -251,6 +251,43 @@ let RuleSchema5 = new Schema(
     },
   }
 );
+
+let RuleSchema7 = new Schema(
+  {
+    ip: { type: String },
+    network: { type: String },
+    version: { type: String },
+    city: { type: String },
+    region: { type: String },
+    region_code: { type: String },
+    country: { type: String },
+    country_name: { type: String },
+    country_code: { type: String },
+    country_code_iso3: { type: String },
+    country_capital: { type: String },
+    country_tld: { type: String },
+    continent_code: { type: String },
+    country_calling_code: { type: String },
+    currency: { type: String },
+    currency_name: { type: String },
+    languages: { type: String },
+    country_area: { type: Number },
+    country_population: { type: Number },
+    asn: { type: String },
+    org: { type: String },
+    id: { type: String },
+    updatedAt: { type: Number },
+    createdAt: { type: Number },
+  },
+  {
+    timestamps: () => Math.floor(Date.now() / 1000),
+    toJSON: {
+      transform(doc, ret) {
+        return ret;
+      },
+    },
+  }
+);
 let TagsSchema = new Schema(
   {
     code: { type: Number },
@@ -283,6 +320,7 @@ const RuleModel2 = connection.model("RuleModel2", RuleSchema2);
 const RuleModel3 = connection.model("RuleModel3", RuleSchema3);
 const RuleModel4 = connection.model("RuleModel4", RuleSchema4);
 const RuleModel5 = connection.model("RuleModel5", RuleSchema5);
+const RuleModel7 = connection.model("RuleModel7", RuleSchema7);
 const Tags = connection.model("Tags", TagsSchema);
 module.exports = {
   UserModel,
@@ -297,5 +335,6 @@ module.exports = {
   RuleModel3,
   RuleModel4,
   RuleModel5,
+  RuleModel7,
   Tags,
 };
