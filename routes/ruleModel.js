@@ -47,12 +47,14 @@ router.put("/rule", async (req, res) => {
 // 删除规则
 router.delete("/rule", async (req, res) => {
   let { id } = req.body;
-  let target = await RuleModel.find({ id });
+  let target = await RuleModel.find({ $and: id.map((id) => ({ id })) });
   if (!target.length) {
     res.send({ status: "error", message: "没有找到" });
     return;
   }
-  let result = await RuleModel.deleteMany({ id });
+  let result = await RuleModel.deleteMany({
+    $and: target.map((item) => ({ id: item.id })),
+  });
   return res.json(result);
 });
 //查询
