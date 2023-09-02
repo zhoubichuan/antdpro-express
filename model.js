@@ -255,6 +255,8 @@ let RuleSchema5 = new Schema(
 let RuleSchema7 = new Schema(
   {
     ip: { type: String },
+    latitude: { type: String },
+    longitude: { type: String },
     network: { type: String },
     version: { type: String },
     city: { type: String },
@@ -271,13 +273,13 @@ let RuleSchema7 = new Schema(
     currency: { type: String },
     currency_name: { type: String },
     languages: { type: String },
-    country_area: { type: Number },
-    country_population: { type: Number },
+    country_area: { type: String },
+    country_population: { type: String },
     asn: { type: String },
     org: { type: String },
     id: { type: String },
-    updatedAt: { type: Number },
-    createdAt: { type: Number },
+    updatedAt: { type: String },
+    createdAt: { type: String },
   },
   {
     timestamps: () => Math.floor(Date.now() / 1000),
