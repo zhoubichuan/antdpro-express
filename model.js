@@ -252,44 +252,6 @@ let RuleSchema5 = new Schema(
   }
 );
 
-let RuleSchema7 = new Schema(
-  {
-    ip: { type: String },
-    latitude: { type: String },
-    longitude: { type: String },
-    network: { type: String },
-    version: { type: String },
-    city: { type: String },
-    region: { type: String },
-    region_code: { type: String },
-    country: { type: String },
-    country_name: { type: String },
-    country_code: { type: String },
-    country_code_iso3: { type: String },
-    country_capital: { type: String },
-    country_tld: { type: String },
-    continent_code: { type: String },
-    country_calling_code: { type: String },
-    currency: { type: String },
-    currency_name: { type: String },
-    languages: { type: String },
-    country_area: { type: String },
-    country_population: { type: String },
-    asn: { type: String },
-    org: { type: String },
-    id: { type: String },
-    updatedAt: { type: String },
-    createdAt: { type: String },
-  },
-  {
-    timestamps: () => Math.floor(Date.now() / 1000),
-    toJSON: {
-      transform(doc, ret) {
-        return ret;
-      },
-    },
-  }
-);
 let TagsSchema = new Schema(
   {
     code: { type: Number },
@@ -322,9 +284,8 @@ const RuleModel2 = connection.model("RuleModel2", RuleSchema2);
 const RuleModel3 = connection.model("RuleModel3", RuleSchema3);
 const RuleModel4 = connection.model("RuleModel4", RuleSchema4);
 const RuleModel5 = connection.model("RuleModel5", RuleSchema5);
-const RuleModel7 = connection.model("RuleModel7", RuleSchema7);
 const Tags = connection.model("Tags", TagsSchema);
-module.exports = {
+const target = {
   UserModel,
   NoticeModel,
   FormModel,
@@ -337,6 +298,25 @@ module.exports = {
   RuleModel3,
   RuleModel4,
   RuleModel5,
-  RuleModel7,
   Tags,
 };
+["7"].forEach((key) => {
+  target["RuleModel" + key] = connection.model(
+    "RuleModel" + key,
+    new Schema(
+      require("./template" + key + ".json").reduce(
+        (cur, pre) => (pre[cur.name] = { type: String }),
+        {}
+      ),
+      {
+        timestamps: () => Math.floor(Date.now() / 1000),
+        toJSON: {
+          transform(doc, ret) {
+            return ret;
+          },
+        },
+      }
+    )
+  );
+});
+module.exports = target;
