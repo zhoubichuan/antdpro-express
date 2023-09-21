@@ -7,7 +7,7 @@ let checkPermission = require("../checkPermission");
 let moment = require("moment");
 
 let getFileds = (key, state, data) => {
-  let jsonArray = require("./template" + key + ".json");
+  let jsonArray = require("../template" + key + ".json");
   let fieldObj = {};
   jsonArray.forEach((item) => {
     if (item[state]) {
