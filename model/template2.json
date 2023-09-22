@@ -1,0 +1,65 @@
+[
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "code",
+    "type": "number",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": false,
+    "view": true,
+    "name": "device",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": false,
+    "view": true,
+    "name": "content",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "task",
+    "type": "number",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": false,
+    "view": true,
+    "name": "count",
+    "type": "number",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "time",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "type",
+    "type": "number",
+    "addDefault": "111"
+  }
+]

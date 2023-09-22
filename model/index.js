@@ -1,7 +1,7 @@
 let mongoose = require("mongoose");
 mongoose.set("useFindAndModify", false);
 const Schema = mongoose.Schema;
-let config = require("./config");
+let config = require("../config");
 //连接mongodb数据库
 let connection = mongoose.createConnection(config.dbUrl, {
   authSource: "admin", // 权限认证（添加这个属性！！！！！）
@@ -155,119 +155,7 @@ let RuleSchema = new Schema(
     },
   }
 );
-let RuleSchema1 = new Schema(
-  {
-    code: { type: Number },
-    work: { type: String },
-    area: { type: Number },
-    mileage: { type: Number },
-    time: { type: String },
-    workStatus: { type: Number },
-    assessStatus: { type: Number },
-    option: { type: Array },
-  },
-  {
-    timestamps: true,
-    toJSON: {
-      transform(doc, ret) {
-        return ret;
-      },
-    },
-  }
-);
-let RuleSchema2 = new Schema(
-  {
-    code: { type: Number },
-    device: { type: String },
-    content: { type: String },
-    task: { type: String },
-    count: { type: Number },
-    time: { type: String },
-    type: { type: Number },
-  },
-  {
-    timestamps: true,
-    toJSON: {
-      transform(doc, ret) {
-        return ret;
-      },
-    },
-  }
-);
-let RuleSchema3 = new Schema(
-  {
-    code: { type: Number },
-    device: { type: String },
-    content: { type: String },
-    type: { type: Number },
-    grade: { type: Number },
-    time: { type: String },
-    status: { type: Number },
-  },
-  {
-    timestamps: true,
-    toJSON: {
-      transform(doc, ret) {
-        return ret;
-      },
-    },
-  }
-);
-let RuleSchema4 = new Schema(
-  {
-    code: { type: Number },
-    name: { type: String },
-    type: { type: String },
-    machine: { type: String },
-    time: { type: String },
-    status: { type: Number },
-    remark: { type: String },
-  },
-  {
-    timestamps: true,
-    toJSON: {
-      transform(doc, ret) {
-        return ret;
-      },
-    },
-  }
-);
-let RuleSchema5 = new Schema(
-  {
-    code: { type: Number },
-    name: { type: String },
-    type: { type: String },
-    count: { type: Number },
-    number: { type: Number },
-    status: { type: Number },
-    remark: { type: String },
-  },
-  {
-    timestamps: true,
-    toJSON: {
-      transform(doc, ret) {
-        return ret;
-      },
-    },
-  }
-);
 
-let TagsSchema = new Schema(
-  {
-    code: { type: Number },
-    name: { type: String },
-    type: { type: String },
-    value: { type: Number },
-  },
-  {
-    timestamps: true,
-    toJSON: {
-      transform(doc, ret) {
-        return ret;
-      },
-    },
-  }
-);
 //创建User模型 可以操作数据库
 const UserModel = connection.model("User", UserSchema);
 const NoticeModel = connection.model("Notices", NoticeSchema);
@@ -279,13 +167,7 @@ const AdvancedFormModel = connection.model(
 );
 const ProfileModel = connection.model("ProfileModel", ProfileSchema);
 const RuleModel = connection.model("RuleModel", RuleSchema);
-const RuleModel1 = connection.model("RuleModel1", RuleSchema1);
-const RuleModel2 = connection.model("RuleModel2", RuleSchema2);
-const RuleModel3 = connection.model("RuleModel3", RuleSchema3);
-const RuleModel4 = connection.model("RuleModel4", RuleSchema4);
-const RuleModel5 = connection.model("RuleModel5", RuleSchema5);
-const Tags = connection.model("Tags", TagsSchema);
-const target = {
+module.exports = {
   UserModel,
   NoticeModel,
   FormModel,
@@ -293,30 +175,5 @@ const target = {
   ActiveModel,
   ProfileModel,
   RuleModel,
-  RuleModel1,
-  RuleModel2,
-  RuleModel3,
-  RuleModel4,
-  RuleModel5,
-  Tags,
+  ...require('./ruleModel7')(connection),
 };
-["7","8"].forEach((key) => {
-  target["RuleModel" + key] = connection.model(
-    "RuleModel" + key,
-    new Schema(
-      require("./template" + key + ".json").reduce(
-        (cur, pre) => (pre[cur.name] = { type: String }),
-        {}
-      ),
-      {
-        timestamps: () => Math.floor(Date.now() / 1000),
-        toJSON: {
-          transform(doc, ret) {
-            return ret;
-          },
-        },
-      }
-    )
-  );
-});
-module.exports = target;

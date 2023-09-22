@@ -18,7 +18,7 @@ let getFileds = (key, state, data) => {
   return fieldObj;
 };
 
-["7","8"].forEach((key) => {
+["1", "2", "3", "4", "5", "7", "8"].forEach((key) => {
   let Models = require("../model");
   // 添加规则
   router.post("/rule" + key, async (req, res) => {
