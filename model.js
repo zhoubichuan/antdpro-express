@@ -300,7 +300,7 @@ const target = {
   RuleModel5,
   Tags,
 };
-["7"].forEach((key) => {
+["7","8"].forEach((key) => {
   target["RuleModel" + key] = connection.model(
     "RuleModel" + key,
     new Schema(
