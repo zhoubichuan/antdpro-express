@@ -1,10 +1,12 @@
 const fieldTypes = { string: String, number: Number, array: Array };
 let mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const targetObj = require("../template")
 let rules = (connection) => {
   const target = {};
-  ["1", "2", "3", "4", "5", "7", "8"].forEach((key) => {
-    let data = require(`./template${key}.json`);
+  Object.keys(targetObj).forEach((key) => {
+    let data = targetObj[key];
+    key = key.replace("template", "");
     target["RuleModel" + key] = connection.model(
       "RuleModel" + key,
       new Schema(
