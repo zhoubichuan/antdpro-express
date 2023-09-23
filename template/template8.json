@@ -20,7 +20,7 @@
   {
     "add": true,
     "delete": true,
-    "edit": false,
+    "edit": true,
     "view": true,
     "name": "latitude",
     "type": "string",
@@ -29,7 +29,7 @@
   {
     "add": true,
     "delete": true,
-    "edit": false,
+    "edit": true,
     "view": true,
     "name": "longitude",
     "type": "string",
