@@ -6,7 +6,7 @@ let rules = (connection) => {
   const target = {};
   Object.keys(targetObj).forEach((key) => {
     let data = targetObj[key];
-    key = key.replace("template", "");
+    key = key.slice(0,-5).replace("template", "");
     target["RuleModel" + key] = connection.model(
       "RuleModel" + key,
       new Schema(

@@ -19,9 +19,9 @@ let getFileds = (key, state, data) => {
 };
 
 Object.keys(require("../template")).forEach((key) => {
-  key = key.replace("template", "");
+  key = key.slice(0,-5).replace("template", "");
   let Models = require("../model");
-  // 添加规则
+  // 添加规则 
   router.post("/rule" + key, async (req, res) => {
     let currentId = "1";
     let preRow = await Models["RuleModel" + key]
