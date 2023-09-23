@@ -52,5 +52,14 @@
     "name": "city",
     "type": "string",
     "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": false,
+    "view": true,
+    "name": "detail",
+    "type": "string",
+    "addDefault": "111"
   }
 ]
