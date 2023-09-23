@@ -5,23 +5,23 @@ let config = require("../config");
 let checkLogin = require("../checkLogin");
 let checkPermission = require("../checkPermission");
 let moment = require("moment");
-
+let templateData = require("../template");
 let getFileds = (key, state, data) => {
-  let jsonArray = require("../template" + key + ".json");
+  let jsonArray = templateData["template" + key + ".json"];
   let fieldObj = {};
   jsonArray.forEach((item) => {
     if (item[state]) {
       fieldObj[item.name] =
-        data[item.name] || state === "add" ? item["addDefault"] : "";
+        data[item.name] || (state === "add" ? item["addDefault"] : "");
     }
   });
   return fieldObj;
 };
 
-Object.keys(require("../template")).forEach((key) => {
-  key = key.slice(0,-5).replace("template", "");
+Object.keys(templateData).forEach((key) => {
+  key = key.slice(0, -5).replace("template", "");
   let Models = require("../model");
-  // 添加规则 
+  // 添加规则
   router.post("/rule" + key, async (req, res) => {
     let currentId = "1";
     let preRow = await Models["RuleModel" + key]
@@ -34,9 +34,10 @@ Object.keys(require("../template")).forEach((key) => {
       currentId = String(Number(preRow[0].id) + 1);
       currentId = "0".repeat(7 - currentId.length) + currentId;
     }
-    let result = await Models["RuleModel" + key].create(
-      getFileds(7, "add", req.body)
-    );
+    let result = await Models["RuleModel" + key].create({
+      ...getFileds(key, "add", req.body),
+      id: currentId,
+    });
     return res.json(result);
   });
   // 更新规则
@@ -49,7 +50,7 @@ Object.keys(require("../template")).forEach((key) => {
     }
     let result = await Models["RuleModel" + key].updateMany(
       { id },
-      { $set: getFileds(7, "edit", req.body) }
+      { $set: getFileds(key, "edit", req.body) }
     );
     return res.json(result);
   });

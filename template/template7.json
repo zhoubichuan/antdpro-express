@@ -1,5 +1,14 @@
 [
   {
+    "add": false,
+    "delete": false,
+    "edit": false,
+    "view": true,
+    "name": "id",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
     "add": true,
     "delete": true,
     "edit": true,
@@ -203,15 +212,6 @@
     "edit": true,
     "view": true,
     "name": "org",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "id",
     "type": "string",
     "addDefault": "111"
   },
