@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 let config = require("../config");
 //连接mongodb数据库
 let connection = mongoose.createConnection(config.dbUrl, {
-  authSource: "admin", // 权限认证（添加这个属性！！！！！）
-  user: "root",
-  pass: "ZBCzbc123",
+  // authSource: "admin", // 权限认证（添加这个属性！！！！！）
+  // user: "root",
+  // pass: "ZBCzbc123",
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
