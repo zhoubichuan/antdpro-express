@@ -13,25 +13,7 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "code",
-    "type": "number",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "work",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "area",
+    "name": "step",
     "type": "string",
     "addDefault": "111"
   },
@@ -40,16 +22,7 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "mileage",
-    "type": "number",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "time",
+    "name": "name",
     "type": "string",
     "addDefault": "111"
   },
@@ -58,26 +31,29 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "workStatus",
-    "type": "number",
-    "addDefault": "111"
+    "name": "descript",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "assessStatus",
-    "type": "number",
-    "addDefault": "111"
+    "name": "detail",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "option",
+    "name": "images",
     "type": "array",
-    "addDefault": "111"
+    "addDefault": "[]",
+    "single": true
   }
 ]

@@ -14,7 +14,7 @@
     "edit": true,
     "view": true,
     "name": "code",
-    "type": "number",
+    "type": "string",
     "addDefault": "111"
   },
   {
