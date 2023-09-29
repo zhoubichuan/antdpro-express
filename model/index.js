@@ -175,5 +175,5 @@ module.exports = {
   ActiveModel,
   ProfileModel,
   RuleModel,
-  ...require('./ruleModel7')(connection),
+  ...require('./models')(connection),
 };

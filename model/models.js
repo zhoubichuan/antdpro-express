@@ -25,7 +25,6 @@ let rules = (connection) => {
       );
     });
   });
-
   return target;
 };
 module.exports = rules;
