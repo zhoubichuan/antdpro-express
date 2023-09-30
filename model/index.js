@@ -1,9 +1,26 @@
 let mongoose = require("mongoose");
 mongoose.set("useFindAndModify", false);
 const Schema = mongoose.Schema;
-//连接mongodb数据库
+// //连接mongodb数据库
+// const { MongoClient } = require('mongodb');
+// const client = new MongoClient(process.env.MONGO_URL, {
+//   authSource: process.env._AUTHSOURCE, // 权限认证（添加这个属性！！！！！）
+//   user: process.env._USER,
+//   pass: process.env._PASS,
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+// const dbName = 'antdesignpro5'; // 数据库名称
+// const collectionName = 'myCollection'; // 集合名称
 
-let connection = mongoose.createConnection(process.env.MONGO_URL, {
+// client.connect().then(() => {
+//   const db = client.db(dbName);
+//   const collection = db.collection(collectionName);
+  
+//   // 在这里执行查询操作
+// });
+
+let db = mongoose.createConnection(process.env.MONGO_URL, {
   authSource: process.env._AUTHSOURCE, // 权限认证（添加这个属性！！！！！）
   user: process.env._USER,
   pass: process.env._PASS,
@@ -157,17 +174,18 @@ let RuleSchema = new Schema(
 );
 
 //创建User模型 可以操作数据库
-const UserModel = connection.model("User", UserSchema);
-const NoticeModel = connection.model("Notices", NoticeSchema);
-const ActiveModel = connection.model("Active", ActiveSchema);
-const FormModel = connection.model("FormModel", FormSchema);
-const AdvancedFormModel = connection.model(
+const UserModel = db.model("User", UserSchema);
+const NoticeModel = db.model("Notices", NoticeSchema);
+const ActiveModel = db.model("Active", ActiveSchema);
+const FormModel = db.model("FormModel", FormSchema);
+const AdvancedFormModel = db.model(
   "AdvancedFormModel",
   AdvancedFormSchema
 );
-const ProfileModel = connection.model("ProfileModel", ProfileSchema);
-const RuleModel = connection.model("RuleModel", RuleSchema);
+const ProfileModel = db.model("ProfileModel", ProfileSchema);
+const RuleModel = db.model("RuleModel", RuleSchema);
 module.exports = {
+  db,
   UserModel,
   NoticeModel,
   FormModel,
@@ -175,5 +193,5 @@ module.exports = {
   ActiveModel,
   ProfileModel,
   RuleModel,
-  ...require('./models')(connection),
+  ...require('./models')(db),
 };
