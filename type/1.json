@@ -6,7 +6,16 @@
     "view": true,
     "name": "id",
     "type": "string",
-    "addDefault": ""
+    "addDefault": "id号"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "typeName",
+    "type": "string",
+    "addDefault": "类型名称"
   },
   {
     "add": true,
@@ -15,7 +24,7 @@
     "view": true,
     "name": "type",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": "类型编号"
   },
   {
     "add": true,
@@ -24,7 +33,7 @@
     "view": true,
     "name": "name",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": "名称"
   },
   {
     "add": true,
@@ -33,6 +42,36 @@
     "view": true,
     "name": "value",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": "名称编号"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "descript",
+    "type": "string",
+    "addDefault": "",
+    "single": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "detail",
+    "type": "string",
+    "addDefault": "",
+    "single": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "images",
+    "type": "array",
+    "addDefault": "[]",
+    "single": true
   }
 ]

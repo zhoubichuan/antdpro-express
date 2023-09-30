@@ -1,4 +1,10 @@
-const fieldTypes = { string: String, number: Number, array: Array };
+const fieldTypes = {
+  string: String,
+  number: Number,
+  array: Array,
+  boolean: Boolean,
+  object: Object,
+};
 let mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 let rules = (connection) => {
