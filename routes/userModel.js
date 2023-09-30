@@ -89,7 +89,7 @@ router.get('/currentUser', async (req, res) => {
   let authorization = req.headers['authorization'];
   if (authorization) {
     try {
-      let user = jwt.verify(authorization.split(' ')[1], process.env.MONGO_URL);
+      let user = jwt.verify(authorization.split(' ')[1], process.env._SECRET);
       user = {
         name: user.username,
         avatar: user.avatar,
@@ -154,7 +154,7 @@ router.post('/login/outLogin', async (req, res) => {
   let authorization = req.headers['authorization'];
   if (authorization) {
     try {
-      let { username } = jwt.verify(authorization.split(' ')[1], process.env.MONGO_URL);
+      let { username } = jwt.verify(authorization.split(' ')[1], process.env._SECRET);
       let dbUser = await UserModel.findOne({ username });
       if (dbUser) {
         return res.send({ status: 'success' });
