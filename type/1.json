@@ -51,7 +51,7 @@
     "view": true,
     "name": "descript",
     "type": "string",
-    "addDefault": "",
+    "addDefault": "111",
     "single": true
   },
   {
@@ -61,7 +61,7 @@
     "view": true,
     "name": "detail",
     "type": "string",
-    "addDefault": "",
+    "addDefault": "111",
     "single": true
   },
   {
