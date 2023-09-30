@@ -1,11 +1,6 @@
 let express = require("express");
 let router = express.Router();
 let { Tags } = require("../model");
-let jwt = require("jsonwebtoken");
-let config = require("../config");
-let checkLogin = require("../checkLogin");
-let checkPermission = require("../checkPermission");
-let moment = require('moment')
 // 添加规则
 router.post('/tags', async (req, res) => {
   let {

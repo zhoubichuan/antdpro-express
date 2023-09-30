@@ -6,8 +6,6 @@ let {
   NoticeModel,
   ActiveModel
 } = require('../model');
-let jwt = require('jsonwebtoken');
-let config = require('../config');
 let checkLogin = require('../checkLogin');
 let checkPermission = require('../checkPermission');
 const visitData = [];

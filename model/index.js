@@ -1,14 +1,14 @@
 let mongoose = require("mongoose");
 mongoose.set("useFindAndModify", false);
 const Schema = mongoose.Schema;
-let config = require("../config");
 //连接mongodb数据库
-let connection = mongoose.createConnection(config.dbUrl, {
-  // authSource: "admin", // 权限认证（添加这个属性！！！！！）
-  // user: "root",
-  // pass: "ZBCzbc123",
+
+let connection = mongoose.createConnection(process.env.MONGO_URL, {
+  authSource: process.env._AUTHSOURCE, // 权限认证（添加这个属性！！！！！）
+  user: process.env._USER,
+  pass: process.env._PASS,
   useNewUrlParser: true,
-  useUnifiedTopology: true,
+  useUnifiedTopology: true
 });
 //规定数据库中集合的字段和类型
 let UserSchema = new Schema(

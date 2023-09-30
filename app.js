@@ -2,6 +2,9 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 var routes = require('./routes/index')
+// 加载配置文件
+require('dotenv').config()
+
 const cors = require('cors')
 app.use(cors())
 app.use(bodyParser.json()); //可以接收JSON格式的请求体

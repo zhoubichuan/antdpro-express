@@ -2,7 +2,6 @@ let express = require("express");
 let router = express.Router();
 let { UserModel, Notices } = require("../model");
 let jwt = require("jsonwebtoken");
-let config = require("../config");
 let checkLogin = require("../checkLogin");
 let checkPermission = require("../checkPermission");
 // 注册用户
@@ -76,7 +75,7 @@ router.post('/login/account', async (req, res) => {
   let dbUser = await UserModel.findOne({ username, password });
   if (dbUser) {
     let user = dbUser.toJSON();
-    let token = jwt.sign(user, config.secret, { expiresIn: '1h' });
+    let token = jwt.sign(user, process.env._SECRET, { expiresIn: '1h' });
     return res.send({ status: 'success', token, type: 'account', access: user.access });
   } else {
     return res.send({
@@ -90,7 +89,7 @@ router.get('/currentUser', async (req, res) => {
   let authorization = req.headers['authorization'];
   if (authorization) {
     try {
-      let user = jwt.verify(authorization.split(' ')[1], config.secret);
+      let user = jwt.verify(authorization.split(' ')[1], process.env.MONGO_URL);
       user = {
         name: user.username,
         avatar: user.avatar,
@@ -155,7 +154,7 @@ router.post('/login/outLogin', async (req, res) => {
   let authorization = req.headers['authorization'];
   if (authorization) {
     try {
-      let { username } = jwt.verify(authorization.split(' ')[1], config.secret);
+      let { username } = jwt.verify(authorization.split(' ')[1], process.env.MONGO_URL);
       let dbUser = await UserModel.findOne({ username });
       if (dbUser) {
         return res.send({ status: 'success' });
