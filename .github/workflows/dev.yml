@@ -33,4 +33,4 @@ jobs:
             export PATH=$PATH:$NODE_HOME/bin
             npm install
             pm2 delete antdpro-express
-            dotenv -e .env.dev pm2 start app.js --name antdpro-express
+            pm2 start app.js --name antdpro-express
