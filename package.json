@@ -23,6 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "mongoose": "^5.11.4",
+    "node-xlsx": "^0.23.0",
     "pm2": "^5.2.0"
   },
   "devDependencies": {
