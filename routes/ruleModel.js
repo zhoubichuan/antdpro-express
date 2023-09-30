@@ -1,11 +1,6 @@
 let express = require("express");
 let router = express.Router();
 let { RuleModel } = require("../model");
-let jwt = require("jsonwebtoken");
-let config = require("../config");
-let checkLogin = require("../checkLogin");
-let checkPermission = require("../checkPermission");
-let moment = require("moment");
 // 添加规则
 router.post("/rule", async (req, res) => {
   let { name = "TradeCode", type = "张三", value = "asdfa" } = req.body;

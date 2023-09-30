@@ -1,5 +1,3 @@
-let config = require('./config');
-let jwt = require('jsonwebtoken');
 let { FORBIDDEN } = require("http-status-codes");
 const checkPermission = (...allowed) => {//allowed=['user','admin']
   return async (req, res, next) => {

@@ -1,8 +1,6 @@
 let express = require('express');
 let router = express.Router();
 let { FormModel, AdvancedFormModel } = require('../model');
-let jwt = require('jsonwebtoken');
-let config = require('../config');
 let checkLogin = require('../checkLogin');
 let signupValidation = require('../checkForm');
 let checkPermission = require('../checkPermission');

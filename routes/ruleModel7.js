@@ -1,11 +1,5 @@
 let express = require("express");
 let router = express.Router();
-let jwt = require("jsonwebtoken");
-let config = require("../config");
-let checkLogin = require("../checkLogin");
-let checkPermission = require("../checkPermission");
-let moment = require("moment");
-const { json } = require("body-parser");
 ["field", "type", "data", "template"].forEach((item) => {
   let templateData = require("../"+item);
   let getFileds = (key, state, data) => {
