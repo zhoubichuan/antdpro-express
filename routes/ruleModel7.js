@@ -115,12 +115,19 @@ let router = express.Router();
       }
       current = parseInt(current);
       pageSize = parseInt(pageSize);
-      if (query && query.userip) {
-        query.userip = new RegExp(query.userip);
-      }
+      let newQuery = {};
+      Object.keys(query).forEach((key) => {
+        if (!query[key]) return;
+        if (key === "userip") {
+          newQuery[key] = new RegExp(query[key]);
+        } else {
+          newQuery[key] = query[key];
+        }
+      });
+
       let total = await Models[item + key].countDocuments(query);
       let users = await Models[item + key]
-        .find(query)
+        .find(newQuery)
         .sort(sorter)
         .skip((current - 1) * pageSize)
         .limit(pageSize);

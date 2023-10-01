@@ -16,17 +16,17 @@ const Schema = mongoose.Schema;
 // client.connect().then(() => {
 //   const db = client.db(dbName);
 //   const collection = db.collection(collectionName);
-  
+
 //   // 在这里执行查询操作
 // });
-
-let db = mongoose.createConnection(process.env.MONGO_URL, {
-  authSource: process.env._AUTHSOURCE, // 权限认证（添加这个属性！！！！！）
-  user: process.env._USER,
-  pass: process.env._PASS,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+let { MONGO_URL, _AUTHSOURCE, _USER, _PASS,LOCAL } = process.env;
+let config = { useNewUrlParser: true, useUnifiedTopology: true };
+if (!LOCAL) {
+  config.authSource = _AUTHSOURCE; // 权限认证（添加这个属性！！！！！）
+  config.user = _USER;
+  config.pass = _PASS;
+}
+let db = mongoose.createConnection(MONGO_URL, config);
 //规定数据库中集合的字段和类型
 let UserSchema = new Schema(
   {
@@ -178,10 +178,7 @@ const UserModel = db.model("User", UserSchema);
 const NoticeModel = db.model("Notices", NoticeSchema);
 const ActiveModel = db.model("Active", ActiveSchema);
 const FormModel = db.model("FormModel", FormSchema);
-const AdvancedFormModel = db.model(
-  "AdvancedFormModel",
-  AdvancedFormSchema
-);
+const AdvancedFormModel = db.model("AdvancedFormModel", AdvancedFormSchema);
 const ProfileModel = db.model("ProfileModel", ProfileSchema);
 const RuleModel = db.model("RuleModel", RuleSchema);
 module.exports = {
@@ -193,5 +190,5 @@ module.exports = {
   ActiveModel,
   ProfileModel,
   RuleModel,
-  ...require('./models')(db),
+  ...require("./models")(db),
 };

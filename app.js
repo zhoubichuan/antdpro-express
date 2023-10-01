@@ -14,7 +14,6 @@ Object.keys(routes).forEach(key => {
   app.use('/api', routes[key])
 })
 
-app.prototype.$env={evn:process.MODE_ENV,user:process.MODE_USER,password:process.MODE_PWD}
 // 错误处理
 app.use((err, req, res, next) => {
   err.statusCode = err.statusCode || 500
