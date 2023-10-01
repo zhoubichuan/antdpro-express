@@ -79,9 +79,19 @@
     "delete": true,
     "edit": true,
     "view": true,
+    "name": "hasChildren",
+    "type": "string",
+    "addDefault": "",
+    "single": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
     "name": "children",
-    "type": "object",
-    "addDefault": "{}",
+    "type": "array",
+    "addDefault": "[]",
     "single": true
   }
 ]

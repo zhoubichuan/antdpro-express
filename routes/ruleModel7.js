@@ -139,8 +139,23 @@ let router = express.Router();
         .sort(sorter)
         .skip((current - 1) * pageSize)
         .limit(pageSize);
+      let data = [];
+      for (let i = 0; i < users.length; i++) {
+        let o = users[i];
+        if (o.hasChildren) {
+          let childrens = await Models[item + key]
+            .find({ type: o.hasChildren })
+            .sort(sorter)
+            .skip((current - 1) * pageSize)
+            .limit(pageSize);
+          o.children = childrens;
+        } else {
+          o.children = [];
+        }
+        data.push(o);
+      }
       const result = {
-        data: users,
+        data,
         total,
         pageSize,
         current,
