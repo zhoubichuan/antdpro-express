@@ -73,5 +73,15 @@
     "type": "array",
     "addDefault": "[]",
     "single": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "children",
+    "type": "object",
+    "addDefault": "{}",
+    "single": true
   }
 ]

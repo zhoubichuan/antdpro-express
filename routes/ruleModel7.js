@@ -102,11 +102,19 @@ let router = express.Router();
     });
     //查询
     router.get("/list/" + item + "/" + key, async (req, res) => {
-      let { current = 1, pageSize = 10, sorter, filter, ...query } = req.query;
-      if (sorter) {
-        sorter = sorter ? JSON.parse(sorter) : {};
-        sorter[key] = sorter[key] === "ascend" ? 1 : -1;
-      }
+      let {
+        current = 1,
+        pageSize = 10,
+        sorter = { updatedAt: -1 },
+        filter,
+        ...query
+      } = req.query;
+      // if (sorter) {
+      //   sorter = JSON.parse(sorter);
+      //   for (let key in sorter) {
+      //     if (key === "ascend") sorter[key] = sorter[key] === "ascend" ? 1 : -1;
+      //   }
+      // }
       if (filter) {
         filter = filter ? JSON.parse(filter) : {};
         for (let key in filter) {
