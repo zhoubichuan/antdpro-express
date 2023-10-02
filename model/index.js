@@ -206,6 +206,7 @@ const target = {};
         },
       },
     };
+    console.log(`${item}${key}`, "-----------------item------------");
     target[`${item}${key}`] = db.model(
       `${item}${key}`,
       new Schema(fieldSchema, defaultSchema)
@@ -213,7 +214,7 @@ const target = {};
   });
 });
 module.exports = {
-  db:db,
+  db: db,
   UserModel,
   NoticeModel,
   FormModel,
