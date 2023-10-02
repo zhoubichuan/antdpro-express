@@ -55,10 +55,9 @@ let router = express.Router();
     // 添加
     router.post("/list/" + item + "/" + key, async (req, res) => {
       let currentId = "1";
-      let preRow = await Models[item + key]
-        ?.find({})
-        .sort({ updatedAt: -1 })
-        .limit(1) || [];
+      let preRow =
+        (await Models[item + key]?.find({}).sort({ updatedAt: -1 }).limit(1)) ||
+        [];
       if (!preRow[0] || !preRow[0].id) {
         currentId = "0000001";
       } else {
@@ -132,7 +131,6 @@ let router = express.Router();
           newQuery[key] = query[key];
         }
       });
-
       let total = (await Models[item + key]?.countDocuments(query)) || 0;
       let users =
         (await Models[item + key]
@@ -140,6 +138,7 @@ let router = express.Router();
           .sort(sorter)
           .skip((current - 1) * pageSize)
           .limit(pageSize)) || [];
+      console.log(users, "-----------users------------------");
       let data = [];
       for (let i = 0; i < users.length; i++) {
         let o = users[i];
