@@ -1,5 +1,7 @@
 let express = require("express");
 let router = express.Router();
+let Models = require("../model");
+
 ["field", "type", "data", "template"].forEach((item) => {
   let templateData = require("../" + item);
   let getFileds = (key, state, data) => {
@@ -16,7 +18,6 @@ let router = express.Router();
 
   Object.keys(templateData).forEach((key) => {
     key = key.replace(".json", "");
-    let Models = require("../model");
     // 导入
     router.post("/list/" + item + "/" + key + "/export", async (req, res) => {
       let currentId = "1";
