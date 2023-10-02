@@ -133,7 +133,7 @@ let router = express.Router();
         }
       });
 
-      let total = await Models[item + key].countDocuments(query);
+      let total = (await Models[item + key]?.countDocuments(query)) || 0;
       let users = await Models[item + key]
         .find(newQuery)
         .sort(sorter)
