@@ -2,8 +2,7 @@ require('dotenv').config()
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
-var Models = require('./model/index')
-var routes = require('./routes/index')(Models)
+var routes = require('./routes/index')
 
 const cors = require('cors')
 app.use(cors())

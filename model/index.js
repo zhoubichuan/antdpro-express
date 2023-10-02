@@ -208,7 +208,6 @@ for (let i = 0; i < targetArray.length; i++) {
         },
       },
     };
-    if(item.includes('templatetemplate')) return
     console.log(`${item}${key}`, "-----------------item------------");
     target[`${item}${key}`] = db.model(
       `${item}${key}`,
