@@ -56,7 +56,7 @@ let router = express.Router();
     router.post("/list/" + item + "/" + key, async (req, res) => {
       let currentId = "1";
       let preRow = await Models[item + key]
-        .find({})
+        ?.find({})
         .sort({ updatedAt: -1 })
         .limit(1);
       if (!preRow[0] || !preRow[0].id) {
@@ -74,7 +74,7 @@ let router = express.Router();
     // 更新
     router.put("/list/" + item + "/" + key, async (req, res) => {
       let { id = 1 } = req.body;
-      let target = await Models[item + key].find({ id });
+      let target = await Models[item + key]?.find({ id });
       if (!target.length) {
         res.send({ status: "error", message: "没有找到" });
         return;
@@ -88,14 +88,14 @@ let router = express.Router();
     // 删除
     router.delete("/list/" + item + "/" + key, async (req, res) => {
       let { id } = req.body;
-      let target = await Models[item + key].find({
+      let target = await Models[item + key]?.find({
         $or: id.map((id) => ({ id })),
       });
       if (!target.length) {
         res.send({ status: "error", message: "没有找到" });
         return;
       }
-      let result = await Models[item + key].deleteMany({
+      let result = await Models[item + key]?.deleteMany({
         $or: target.map((item) => ({ id: item.id })),
       });
       return res.json(result);
