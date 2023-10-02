@@ -138,7 +138,7 @@ let router = express.Router();
           .sort(sorter)
           .skip((current - 1) * pageSize)
           .limit(pageSize)) || [];
-      console.log(users, "-----------users------------------");
+      console.log(users, "-----------users------------------",Models[item + key]);
       let data = [];
       for (let i = 0; i < users.length; i++) {
         let o = users[i];
