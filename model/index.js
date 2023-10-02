@@ -189,7 +189,9 @@ const fieldTypes = {
   object: Object,
 };
 const target = {};
-["field", "type", "data", "template"].forEach((item) => {
+let targetArray = ["field", "type", "data", "template"];
+for (let i = 0; i < targetArray.length; i++) {
+  let item = targetArray[i];
   const targetObj = require("../" + item);
   Object.keys(targetObj).forEach((key) => {
     let data = targetObj[key];
@@ -212,7 +214,8 @@ const target = {};
       new Schema(fieldSchema, defaultSchema)
     );
   });
-});
+}
+
 module.exports = {
   db: db,
   UserModel,
