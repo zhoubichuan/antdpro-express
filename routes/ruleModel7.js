@@ -134,20 +134,22 @@ let router = express.Router();
       });
 
       let total = (await Models[item + key]?.countDocuments(query)) || 0;
-      let users = await Models[item + key]
-        .find(newQuery)
-        .sort(sorter)
-        .skip((current - 1) * pageSize)
-        .limit(pageSize);
+      let users =
+        (await Models[item + key]
+          ?.find(newQuery)
+          .sort(sorter)
+          .skip((current - 1) * pageSize)
+          .limit(pageSize)) || [];
       let data = [];
       for (let i = 0; i < users.length; i++) {
         let o = users[i];
         if (o.hasChildren) {
-          let childrens = await Models[item + key]
-            .find({ type: o.hasChildren })
-            .sort(sorter)
-            .skip((current - 1) * pageSize)
-            .limit(pageSize);
+          let childrens =
+            (await Models[item + key]
+              ?.find({ type: o.hasChildren })
+              .sort(sorter)
+              .skip((current - 1) * pageSize)
+              .limit(pageSize)) || [];
           o.children = childrens;
         } else {
           o.children = [];
