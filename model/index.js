@@ -19,13 +19,14 @@ const Schema = mongoose.Schema;
 
 //   // 在这里执行查询操作
 // });
-let { MONGO_URL, _AUTHSOURCE, _USER, _PASS,LOCAL } = process.env;
+let { MONGO_URL, _AUTHSOURCE, _USER, _PASS, LOCAL } = process.env;
 let config = { useNewUrlParser: true, useUnifiedTopology: true };
 if (!LOCAL) {
   config.authSource = _AUTHSOURCE; // 权限认证（添加这个属性！！！！！）
   config.user = _USER;
   config.pass = _PASS;
 }
+console.log(MONGO_URL, "-----------------model------------", config);
 let db = mongoose.createConnection(MONGO_URL, config);
 //规定数据库中集合的字段和类型
 let UserSchema = new Schema(
