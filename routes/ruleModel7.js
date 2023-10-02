@@ -42,7 +42,7 @@ let router = express.Router();
         return target;
       });
       Models.db
-        .collection(`${item}${key}`)
+        ?.collection(`${item}${key}`)
         .insertMany(data, function (err, result) {
           if (err) {
             console.log("导入数据失败:", err);
@@ -58,7 +58,7 @@ let router = express.Router();
       let preRow = await Models[item + key]
         ?.find({})
         .sort({ updatedAt: -1 })
-        .limit(1);
+        .limit(1) || [];
       if (!preRow[0] || !preRow[0].id) {
         currentId = "0000001";
       } else {
