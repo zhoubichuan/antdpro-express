@@ -31,6 +31,7 @@ let rules = (connection) => {
       );
     });
   });
+  console.log(target,'-----------------model------------')
   return target;
 };
 module.exports = rules;
