@@ -26,7 +26,6 @@ if (!LOCAL) {
   config.user = _USER;
   config.pass = _PASS;
 }
-console.log(MONGO_URL, "-----------------model------------", config);
 let db = mongoose.createConnection(MONGO_URL, config);
 //规定数据库中集合的字段和类型
 let UserSchema = new Schema(
@@ -213,9 +212,8 @@ const target = {};
     );
   });
 });
-console.log(target, "-----------------model------------");
 module.exports = {
-  db,
+  db:db,
   UserModel,
   NoticeModel,
   FormModel,
