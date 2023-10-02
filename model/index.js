@@ -182,6 +182,8 @@ const FormModel = db.model("FormModel", FormSchema);
 const AdvancedFormModel = db.model("AdvancedFormModel", AdvancedFormSchema);
 const ProfileModel = db.model("ProfileModel", ProfileSchema);
 const RuleModel = db.model("RuleModel", RuleSchema);
+let dy = require("./models")(db);
+console.log(Object.keys(dy), "-----------------dy---------------");
 module.exports = {
   db,
   UserModel,
@@ -191,5 +193,5 @@ module.exports = {
   ActiveModel,
   ProfileModel,
   RuleModel,
-  ...require("./models")(db),
+  ...dy,
 };
