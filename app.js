@@ -2,7 +2,8 @@ require('dotenv').config()
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
-var routes = require('./routes/index')
+var Models = require('./model/index')
+var routes = require('./routes/index')(Models)
 
 const cors = require('cors')
 app.use(cors())
