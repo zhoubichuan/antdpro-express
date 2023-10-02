@@ -20,10 +20,10 @@ let router = express.Router();
     // 导入
     router.post("/list/" + item + "/" + key + "/export", async (req, res) => {
       let currentId = "1";
-      let preRow = await Models[item + key]
-        .find({})
-        .sort({ updatedAt: -1 })
-        .limit(1);
+      console.log(item + key, "item + key]");
+      let preRow =
+        (await Models[item + key]?.find({}).sort({ updatedAt: -1 }).limit(1)) ||
+        [];
       if (!preRow[0] || !preRow[0].id) {
         currentId = "0000001";
       } else {
