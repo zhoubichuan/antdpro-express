@@ -182,8 +182,38 @@ const FormModel = db.model("FormModel", FormSchema);
 const AdvancedFormModel = db.model("AdvancedFormModel", AdvancedFormSchema);
 const ProfileModel = db.model("ProfileModel", ProfileSchema);
 const RuleModel = db.model("RuleModel", RuleSchema);
-let dy = require("./models")(db);
-console.log(Object.keys(dy), "-----------------dy---------------");
+const fieldTypes = {
+  string: String,
+  number: Number,
+  array: Array,
+  boolean: Boolean,
+  object: Object,
+};
+const target = {};
+["field", "type", "data", "template"].forEach((item) => {
+  const targetObj = require("../" + item);
+  Object.keys(targetObj).forEach((key) => {
+    let data = targetObj[key];
+    key = key.replace(".json", "");
+    let fieldSchema = data.reduce((pre, cur) => {
+      pre[cur.name] = { type: fieldTypes[cur.type] };
+      return pre;
+    }, {});
+    let defaultSchema = {
+      timestamps: () => Math.floor(Date.now() / 1000),
+      toJSON: {
+        transform(doc, ret) {
+          return ret;
+        },
+      },
+    };
+    target[`${item}${key}`] = db.model(
+      `${item}${key}`,
+      new Schema(fieldSchema, defaultSchema)
+    );
+  });
+});
+console.log(target, "-----------------model------------");
 module.exports = {
   db,
   UserModel,
@@ -193,5 +223,5 @@ module.exports = {
   ActiveModel,
   ProfileModel,
   RuleModel,
-  ...dy,
+  ...target,
 };
