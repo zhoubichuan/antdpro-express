@@ -134,22 +134,17 @@ let router = express.Router();
       let total = (await Models[item + key].countDocuments(query)) || 0;
       let users =
         (await Models[item + key]
-          .find(newQuery)
+          .find(newQuery, { _id: 0 })
           .sort(sorter)
           .skip((current - 1) * pageSize)
           .limit(pageSize)) || [];
-      console.log(
-        item + key,
-        "-----------users------------------",
-        Object.keys(Models)
-      );
       let data = [];
       for (let i = 0; i < users.length; i++) {
         let o = users[i];
         if (o.hasChildren) {
           let childrens =
             (await Models[item + key]
-              .find({ type: o.hasChildren })
+              .find({ type: o.hasChildren }, { _id: 0 })
               .sort(sorter)
               .skip((current - 1) * pageSize)
               .limit(pageSize)) || [];
