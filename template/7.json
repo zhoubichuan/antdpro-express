@@ -13,224 +13,89 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "ip",
+    "name": "type",
     "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "latitude",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "longitude",
-    "type": "string",
-    "addDefault": "111"
+    "addDefault": ""
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "network",
+    "name": "title",
     "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "version",
-    "type": "string",
-    "addDefault": "111"
+    "addDefault": ""
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "city",
+    "name": "dataIndex",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": ""
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "region",
-    "type": "string",
-    "addDefault": "111"
+    "name": "hideInSearch",
+    "type": "boolean",
+    "addDefault": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "region_code",
-    "type": "string",
-    "addDefault": "111"
+    "name": "hideInTable",
+    "type": "boolean",
+    "addDefault": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "country",
-    "type": "string",
-    "addDefault": "111"
+    "name": "hideInForm",
+    "type": "boolean",
+    "addDefault": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "country_name",
-    "type": "string",
-    "addDefault": "111"
+    "name": "table",
+    "type": "object",
+    "addDefault": {}
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "country_code",
-    "type": "string",
-    "addDefault": "111"
+    "name": "create",
+    "type": "object",
+    "addDefault": {}
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "country_code_iso3",
-    "type": "string",
-    "addDefault": "111"
+    "name": "edit",
+    "type": "object",
+    "addDefault": {}
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "country_capital",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_tld",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "continent_code",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_calling_code",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "currency",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "currency_name",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "languages",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_area",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_population",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "asn",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "org",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "updatedAt",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "createdA",
-    "type": "string",
-    "addDefault": "111"
+    "name": "view",
+    "type": "object",
+    "addDefault": {}
   }
 ]

@@ -13,6 +13,33 @@
     "delete": true,
     "edit": true,
     "view": true,
+    "name": "type",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "title",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "dataIndex",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
     "name": "hideInSearch",
     "type": "boolean",
     "addDefault": true

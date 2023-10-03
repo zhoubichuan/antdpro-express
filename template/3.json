@@ -13,62 +13,89 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "code",
-    "type": "number",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "device",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "content",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
     "name": "type",
-    "type": "number",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "grade",
-    "type": "number",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "time",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": ""
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "status",
-    "type": "number",
-    "addDefault": "111"
+    "name": "title",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "dataIndex",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "hideInSearch",
+    "type": "boolean",
+    "addDefault": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "hideInTable",
+    "type": "boolean",
+    "addDefault": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "hideInForm",
+    "type": "boolean",
+    "addDefault": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "table",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "create",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "edit",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "view",
+    "type": "object",
+    "addDefault": {}
   }
 ]

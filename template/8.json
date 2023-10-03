@@ -13,53 +13,89 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "name",
+    "name": "type",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": ""
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "latitude",
+    "name": "title",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": ""
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "longitude",
+    "name": "dataIndex",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": ""
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "time",
-    "type": "string",
-    "addDefault": "111"
+    "name": "hideInSearch",
+    "type": "boolean",
+    "addDefault": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "city",
-    "type": "string",
-    "addDefault": "111"
+    "name": "hideInTable",
+    "type": "boolean",
+    "addDefault": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "detail",
-    "type": "string",
-    "addDefault": "111"
+    "name": "hideInForm",
+    "type": "boolean",
+    "addDefault": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "table",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "create",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "edit",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "view",
+    "type": "object",
+    "addDefault": {}
   }
 ]
