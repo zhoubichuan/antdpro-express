@@ -13,71 +13,62 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "code",
-    "type": "number",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "work",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "area",
-    "type": "string",
-    "addDefault": "111"
+    "name": "hideInSearch",
+    "type": "boolean",
+    "addDefault": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "mileage",
-    "type": "number",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "time",
-    "type": "string",
-    "addDefault": "111"
+    "name": "hideInTable",
+    "type": "boolean",
+    "addDefault": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "workStatus",
-    "type": "number",
-    "addDefault": "111"
+    "name": "hideInForm",
+    "type": "boolean",
+    "addDefault": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "assessStatus",
-    "type": "number",
-    "addDefault": "111"
+    "name": "table",
+    "type": "object",
+    "addDefault": {}
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "option",
-    "type": "array",
-    "addDefault": "111"
+    "name": "create",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "edit",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "view",
+    "type": "object",
+    "addDefault": {}
   }
 ]
