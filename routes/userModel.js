@@ -5,7 +5,7 @@ let jwt = require("jsonwebtoken");
 let checkLogin = require("../checkLogin");
 let checkPermission = require("../checkPermission");
 // 注册用户
-router.post("/user", async (req, res) => {
+router.post("/register", async (req, res) => {
   let { username, password, email, access } = req.body;
   let target = await UserModel.find({ username });
   if (target.length) {

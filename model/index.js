@@ -10,7 +10,7 @@ const Schema = mongoose.Schema;
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true
 // });
-// const dbName = 'antdesignpro5'; // 数据库名称
+// const dbName = 'antdproExpress'; // 数据库名称
 // const collectionName = 'myCollection'; // 集合名称
 
 // client.connect().then(() => {
@@ -208,7 +208,6 @@ for (let i = 0; i < targetArray.length; i++) {
         },
       },
     };
-    console.log(`${item}${key}`, "-----------------item------------");
     target[`${item}${key}`] = db.model(
       `${item}${key}`,
       new Schema(fieldSchema, defaultSchema)
