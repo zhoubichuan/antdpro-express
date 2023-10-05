@@ -13,16 +13,7 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "code",
-    "type": "number",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "name",
+    "name": "ip",
     "type": "string",
     "addDefault": "111"
   },
@@ -31,7 +22,16 @@
     "delete": true,
     "edit": false,
     "view": true,
-    "name": "type",
+    "name": "latitude",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": false,
+    "view": true,
+    "name": "longitude",
     "type": "string",
     "addDefault": "111"
   },
@@ -40,8 +40,8 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "count",
-    "type": "number",
+    "name": "network",
+    "type": "string",
     "addDefault": "111"
   },
   {
@@ -49,8 +49,8 @@
     "delete": true,
     "edit": false,
     "view": true,
-    "name": "number",
-    "type": "number",
+    "name": "version",
+    "type": "string",
     "addDefault": "111"
   },
   {
@@ -58,8 +58,8 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "status",
-    "type": "number",
+    "name": "city",
+    "type": "string",
     "addDefault": "111"
   },
   {
@@ -67,7 +67,169 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "remark",
+    "name": "region",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "region_code",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "country",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "country_name",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "country_code",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "country_code_iso3",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "country_capital",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "country_tld",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "continent_code",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "country_calling_code",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "currency",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "currency_name",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "languages",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "country_area",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "country_population",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "asn",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "org",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "updatedAt",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "createdA",
     "type": "string",
     "addDefault": "111"
   }

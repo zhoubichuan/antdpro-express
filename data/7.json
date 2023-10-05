@@ -13,25 +13,7 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "ip",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "latitude",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "longitude",
+    "name": "filterField",
     "type": "string",
     "addDefault": "111"
   },
@@ -40,16 +22,16 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "network",
+    "name": "name",
     "type": "string",
     "addDefault": "111"
   },
   {
     "add": true,
     "delete": true,
-    "edit": false,
+    "edit": true,
     "view": true,
-    "name": "version",
+    "name": "time",
     "type": "string",
     "addDefault": "111"
   },
@@ -67,7 +49,16 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "region",
+    "name": "value",
+    "type": "array",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "descript",
     "type": "string",
     "addDefault": "111"
   },
@@ -76,160 +67,7 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "region_code",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_name",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_code",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_code_iso3",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_capital",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_tld",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "continent_code",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_calling_code",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "currency",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "currency_name",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "languages",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_area",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "country_population",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "asn",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "org",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "updatedAt",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "createdA",
+    "name": "detail",
     "type": "string",
     "addDefault": "111"
   }
