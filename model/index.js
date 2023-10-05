@@ -200,7 +200,10 @@ for (let i = 0; i < targetArray.length; i++) {
       pre[cur.name] = {
         type: fieldTypes[cur.type],
         set(value) {
-          if (["array", "object"].includes(cur.type)) {
+          if (
+            ["array", "object"].includes(cur.type) &&
+            typeof value === "string"
+          ) {
             return JSON.parse(value);
           } else {
             return value;
