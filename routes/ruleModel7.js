@@ -20,9 +20,8 @@ let router = express.Router();
     // 导入
     router.post("/list/" + item + "/" + key + "/export", async (req, res) => {
       let currentId = "1";
-      console.log(item + key, "item + key]");
       let preRow =
-        (await Models[item + key].find({}).sort({ updatedAt: -1 }).limit(1)) ||
+        (await Models[item + key].find({}).sort({ createdAt: -1 }).limit(1)) ||
         [];
       if (!preRow[0] || !preRow[0].id) {
         currentId = "0000001";
@@ -41,22 +40,20 @@ let router = express.Router();
         });
         return target;
       });
-      Models.db
-        .collection(`${item}${key}`)
-        .insertMany(data, function (err, result) {
-          if (err) {
-            console.log("导入数据失败:", err);
-          } else {
-            console.log("成功导入数据:", result.insertedCount, "条记录");
-            return res.json(result);
-          }
-        });
+      Models[item + key].insertMany(data, function (err, result) {
+        if (err) {
+          console.log("导入数据失败:", err);
+        } else {
+          console.log("成功导入数据:", result.insertedCount, "条记录");
+          return res.json(result);
+        }
+      });
     });
     // 添加
     router.post("/list/" + item + "/" + key, async (req, res) => {
       let currentId = "1";
       let preRow =
-        (await Models[item + key].find({}).sort({ updatedAt: -1 }).limit(1)) ||
+        (await Models[item + key].find({}).sort({ createdAt: -1 }).limit(1)) ||
         [];
       if (!preRow[0] || !preRow[0].id) {
         currentId = "0000001";
@@ -104,7 +101,7 @@ let router = express.Router();
       let {
         current = 1,
         pageSize = 10,
-        sorter = { updatedAt: -1 },
+        sorter = { createdAt: -1 },
         filter,
         ...query
       } = req.query;

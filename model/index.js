@@ -161,7 +161,7 @@ let RuleSchema = new Schema(
     value: { type: String },
     id: { type: String },
     updatedAt: { type: Number },
-    createdAt: { type: Number },
+    createdAtt: { type: Number },
   },
   {
     timestamps: () => Math.floor(Date.now() / 1000),
@@ -216,7 +216,6 @@ for (let i = 0; i < targetArray.length; i++) {
 }
 
 module.exports = {
-  db: db,
   UserModel,
   NoticeModel,
   FormModel,

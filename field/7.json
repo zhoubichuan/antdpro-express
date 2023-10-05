@@ -214,23 +214,5 @@
     "name": "org",
     "type": "string",
     "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "updatedAt",
-    "type": "string",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "createdA",
-    "type": "string",
-    "addDefault": "111"
   }
 ]
