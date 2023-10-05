@@ -51,6 +51,15 @@
     "view": true,
     "name": "value",
     "type": "array",
+    "addDefault": "[]"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "value2",
+    "type": "string",
     "addDefault": "111"
   },
   {
