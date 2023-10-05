@@ -13,6 +13,15 @@
     "delete": true,
     "edit": true,
     "view": true,
+    "name": "filterField",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
     "name": "name",
     "type": "string",
     "addDefault": "111"
