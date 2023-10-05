@@ -197,7 +197,16 @@ for (let i = 0; i < targetArray.length; i++) {
     let data = targetObj[key];
     key = key.replace(".json", "");
     let fieldSchema = data.reduce((pre, cur) => {
-      pre[cur.name] = { type: fieldTypes[cur.type] };
+      pre[cur.name] = {
+        type: fieldTypes[cur.type],
+        set(value) {
+          if (["array", "object"].includes(cur.type)) {
+            return JSON.parse(value);
+          } else {
+            return value;
+          }
+        },
+      };
       return pre;
     }, {});
     let defaultSchema = {
