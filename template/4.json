@@ -1,0 +1,101 @@
+[
+  {
+    "add": false,
+    "delete": false,
+    "edit": false,
+    "view": true,
+    "name": "id",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "type",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "title",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "dataIndex",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "hideInSearch",
+    "type": "boolean",
+    "addDefault": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "hideInTable",
+    "type": "boolean",
+    "addDefault": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "hideInForm",
+    "type": "boolean",
+    "addDefault": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "table",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "create",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "edit",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "view",
+    "type": "object",
+    "addDefault": {}
+  }
+]
