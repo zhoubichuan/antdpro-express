@@ -1,0 +1,74 @@
+[
+  {
+    "add": false,
+    "delete": false,
+    "edit": false,
+    "view": true,
+    "name": "id",
+    "type": "string",
+    "addDefault": ""
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "code",
+    "type": "number",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": false,
+    "view": true,
+    "name": "device",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": false,
+    "view": true,
+    "name": "content",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "type",
+    "type": "number",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": false,
+    "view": true,
+    "name": "grade",
+    "type": "number",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "time",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "status",
+    "type": "number",
+    "addDefault": "111"
+  }
+]

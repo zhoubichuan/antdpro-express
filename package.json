@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "dev": "nodemon app.js",
+    "pm2": "pm2 stop app.js --name antdpro-express && pm2 start app.js --name antdpro-express",
+    "dev": "dotenv -e .env.dev  nodemon app.js",
+    "sit": "dotenv -e .env.sit nodemon app.js",
+    "uat": "dotenv -e .env.uat nodemon app.js",
+    "prod": "dotenv -e .env.prod nodemon app.js",
     "deploy": "bash deploy.sh"
   },
   "keywords": [],
@@ -14,14 +17,19 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "express-validator": "^6.14.1",
     "http-status-codes": "^2.1.4",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
-    "mongoose": "^5.11.4"
+    "mongoose": "^5.11.4",
+    "node-xlsx": "^0.23.0",
+    "pm2": "^5.2.0"
   },
   "devDependencies": {
+    "dotenv": "^16.3.1",
+    "dotenv-cli": "^7.3.0",
     "nodemon": "^2.0.6"
   }
 }
