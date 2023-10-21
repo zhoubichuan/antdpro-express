@@ -6,78 +6,92 @@
     "view": true,
     "name": "id",
     "type": "string",
-    "addDefault": ""
+    "addDefault": "id号"
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "code",
+    "name": "typeName",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": "类型名称"
   },
   {
     "add": true,
     "delete": true,
-    "edit": false,
+    "edit": true,
     "view": true,
-    "name": "work",
+    "name": "type",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": "类型编号"
   },
   {
     "add": true,
     "delete": true,
-    "edit": false,
+    "edit": true,
     "view": true,
-    "name": "area",
+    "name": "name",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": "名称"
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "mileage",
-    "type": "number",
-    "addDefault": "111"
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": false,
-    "view": true,
-    "name": "time",
+    "name": "value",
     "type": "string",
-    "addDefault": "111"
+    "addDefault": "名称编号"
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "workStatus",
-    "type": "number",
-    "addDefault": "111"
+    "name": "descript",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "assessStatus",
-    "type": "number",
-    "addDefault": "111"
+    "name": "detail",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "option",
+    "name": "images",
     "type": "array",
-    "addDefault": "111"
+    "addDefault": "[]",
+    "single": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "hasChildren",
+    "type": "string",
+    "addDefault": "",
+    "single": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "children",
+    "type": "array",
+    "addDefault": "[]",
+    "single": true
   }
 ]
