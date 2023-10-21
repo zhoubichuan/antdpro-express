@@ -190,7 +190,7 @@ const fieldTypes = {
 };
 const target = {};
 let targetArray = ["field", "type", "data", "template"];
-for (let i = 0; i < targetArray.length; i++) {
+for (let i = 0;i < targetArray.length;i++) {
   let item = targetArray[i];
   const targetObj = require("../" + item);
   Object.keys(targetObj).forEach((key) => {
@@ -204,7 +204,7 @@ for (let i = 0; i < targetArray.length; i++) {
             ["array", "object"].includes(cur.type) &&
             typeof value === "string"
           ) {
-            return JSON.parse(value);
+            return value ? JSON.parse(value) : cur.type === 'array' ? [] : {};
           } else {
             return value;
           }
