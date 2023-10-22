@@ -10,4 +10,4 @@ RUN rm -rf node_modules && npm install -g npm && cd /project
 RUN npm install
 COPY . /project/
 CMD npm run dev
-EXPOSE 7000
+EXPOSE 7001

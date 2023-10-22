@@ -67,6 +67,15 @@
     "delete": true,
     "edit": true,
     "view": true,
+    "name": "value3",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
     "name": "descript",
     "type": "string",
     "addDefault": "111"
