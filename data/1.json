@@ -13,7 +13,7 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "step",
+    "name": "type",
     "type": "string",
     "addDefault": "111"
   },
