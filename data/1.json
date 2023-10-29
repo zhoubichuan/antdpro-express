@@ -22,6 +22,15 @@
     "delete": true,
     "edit": true,
     "view": true,
+    "name": "author",
+    "type": "string",
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
     "name": "name",
     "type": "string",
     "addDefault": "111"
