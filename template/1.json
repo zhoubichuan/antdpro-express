@@ -49,6 +49,15 @@
     "delete": true,
     "edit": true,
     "view": true,
+    "name": "search",
+    "type": "object",
+    "addDefault": {}
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
     "name": "hideInTable",
     "type": "boolean",
     "addDefault": true
