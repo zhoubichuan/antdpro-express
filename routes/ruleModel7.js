@@ -1,5 +1,6 @@
 var Models = require("../model/index");
 let express = require("express");
+let xlsx = require('node-xlsx')
 let router = express.Router();
 ["field", "type", "data", "template"].forEach((item) => {
   let templateData = require("../" + item);
@@ -18,7 +19,7 @@ let router = express.Router();
   Object.keys(templateData).forEach((key) => {
     key = key.replace(".json", "");
     // 导入
-    router.post("/list/" + item + "/" + key + "/export", async (req, res) => {
+    router.post("/list/" + item + "/" + key + "/import", async (req, res) => {
       let currentId = "1";
       let preRow =
         (await Models[item + key].find({}).sort({ createdAt: -1 }).limit(1)) ||
@@ -48,6 +49,23 @@ let router = express.Router();
           return res.json(result);
         }
       });
+    });
+    // 导出
+    router.post("/list/" + item + "/" + key + "/export", async (req, res) => {
+      const data = req.body;
+      if (JSON.stringify(data) === "{}") {
+        data = await Models[item + key].find({})
+        data = res.json(data)
+      }
+      const excelData = [
+        Object.keys(data[0]),
+        ...data.map(item => Object.values(item))
+      ];
+
+      const buffer = xlsx.build([{ name: "Sheet1", data: excelData }]);
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+      res.setHeader('Content-Disposition', 'attachment; filename=' + encodeURIComponent('导出文件.xlsx'));
+      res.send(buffer);
     });
     // 添加
     router.post("/list/" + item + "/" + key, async (req, res) => {
@@ -136,7 +154,7 @@ let router = express.Router();
           .skip((current - 1) * pageSize)
           .limit(pageSize)) || [];
       let data = [];
-      for (let i = 0; i < users.length; i++) {
+      for (let i = 0;i < users.length;i++) {
         let o = users[i];
         if (o.hasChildren) {
           let childrens =

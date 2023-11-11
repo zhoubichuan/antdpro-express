@@ -13,6 +13,15 @@
     "delete": true,
     "edit": true,
     "view": true,
+    "name": "typeName",
+    "type": "string",
+    "addDefault": "类型名称"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
     "name": "type",
     "type": "string",
     "addDefault": "111"
