@@ -73,5 +73,45 @@
     "type": "array",
     "addDefault": "[]",
     "single": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "latitude",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "longitude",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "city",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "time",
+    "type": "string",
+    "addDefault": "111",
+    "single": true
   }
 ]
