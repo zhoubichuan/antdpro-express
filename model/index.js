@@ -189,8 +189,8 @@ const fieldTypes = {
   object: Object,
 };
 const target = {};
-let targetArray = ["field", "type", "data", "template"];
-for (let i = 0; i < targetArray.length; i++) {
+let targetArray = ["field", "type", "data", "template", "backend"];
+for (let i = 0;i < targetArray.length;i++) {
   let item = targetArray[i];
   const targetObj = require("../" + item);
   Object.keys(targetObj).forEach((key) => {

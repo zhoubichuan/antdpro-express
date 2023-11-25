@@ -2,7 +2,7 @@ var Models = require("../model/index");
 let express = require("express");
 let xlsx = require('node-xlsx')
 let router = express.Router();
-["field", "type", "data", "template"].forEach((item) => {
+["field", "type", "data", "template", "backend"].forEach((item) => {
   let templateData = require("../" + item);
   let getFileds = (key, state, data) => {
     let jsonArray = templateData[key + ".json"];
@@ -22,7 +22,7 @@ let router = express.Router();
     router.post("/list/" + item + "/" + key + "/import", async (req, res) => {
       let currentId = "1";
       let preRow =
-        (await Models[item + key].find({}).sort({ createdAt: -1 }).limit(1)) ||
+        (await Models[item + key]?.find({}).sort({ createdAt: -1 }).limit(1)) ||
         [];
       if (!preRow[0] || !preRow[0].id) {
         currentId = "0000001";
@@ -54,7 +54,7 @@ let router = express.Router();
     router.post("/list/" + item + "/" + key + "/export", async (req, res) => {
       const data = req.body;
       if (JSON.stringify(data) === "{}") {
-        data = await Models[item + key].find({})
+        data = await Models[item + key]?.find({})
         data = res.json(data)
       }
       const excelData = [
@@ -70,25 +70,23 @@ let router = express.Router();
     // 添加
     router.post("/list/" + item + "/" + key, async (req, res) => {
       let currentId = "1";
-      let preRow =
-        (await Models[item + key].find({}).sort({ createdAt: -1 }).limit(1)) ||
-        [];
+      let preRow = (await Models[item + key]?.find({})?.sort({ createdAt: -1 })?.limit(1)) || [];
       if (!preRow[0] || !preRow[0].id) {
         currentId = "0000001";
       } else {
         currentId = String(Number(preRow[0].id) + 1);
         currentId = "0".repeat(7 - currentId.length) + currentId;
       }
-      let result = await Models[item + key].create({
+      let result = await Models[item + key]?.create({
         ...getFileds(key, "add", req.body),
         id: currentId,
-      });
+      }) || [];
       return res.json(result);
     });
     // 更新
     router.put("/list/" + item + "/" + key, async (req, res) => {
       let { id = 1 } = req.body;
-      let target = await Models[item + key].find({ id });
+      let target = await Models[item + key]?.find({ id });
       if (!target.length) {
         res.send({ status: "error", message: "没有找到" });
         return;
@@ -102,7 +100,7 @@ let router = express.Router();
     // 删除
     router.delete("/list/" + item + "/" + key, async (req, res) => {
       let { id } = req.body;
-      let target = await Models[item + key].find({
+      let target = await Models[item + key]?.find({
         $or: id.map((id) => ({ id })),
       });
       if (!target.length) {
@@ -146,10 +144,9 @@ let router = express.Router();
           newQuery[key] = query[key];
         }
       });
-      let total = (await Models[item + key].countDocuments(query)) || 0;
+      let total = (await Models[item + key]?.countDocuments(query)) || 0;
       let users =
-        (await Models[item + key]
-          .find(newQuery, { _id: 0 })
+        (await Models[item + key]?.find(newQuery, { _id: 0 })
           .sort(sorter)
           .skip((current - 1) * pageSize)
           .limit(pageSize)) || [];
@@ -158,8 +155,7 @@ let router = express.Router();
         let o = users[i];
         if (o.hasChildren) {
           let childrens =
-            (await Models[item + key]
-              .find({ type: o.hasChildren }, { _id: 0 })
+            (await Models[item + key]?.find({ type: o.hasChildren }, { _id: 0 })
               .sort(sorter)
               .skip((current - 1) * pageSize)
               .limit(pageSize)) || [];
