@@ -1,5 +1,6 @@
 [
   {
+    "filterType": "data",
     "add": false,
     "delete": false,
     "edit": false,
@@ -9,6 +10,7 @@
     "addDefault": ""
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,
@@ -18,6 +20,7 @@
     "addDefault": "类型名称"
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,
@@ -27,6 +30,7 @@
     "addDefault": "111"
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,
@@ -36,6 +40,7 @@
     "addDefault": "111"
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,
@@ -45,6 +50,7 @@
     "addDefault": "111"
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,
@@ -55,6 +61,7 @@
     "single": true
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,
@@ -65,6 +72,7 @@
     "single": true
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,
@@ -75,6 +83,7 @@
     "single": true
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,
@@ -85,6 +94,7 @@
     "single": true
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,
@@ -95,6 +105,7 @@
     "single": true
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,
@@ -105,6 +116,7 @@
     "single": true
   },
   {
+    "filterType": "data",
     "add": true,
     "delete": true,
     "edit": true,

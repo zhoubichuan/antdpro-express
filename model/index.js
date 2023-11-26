@@ -190,6 +190,7 @@ const fieldTypes = {
 };
 const target = {};
 let targetArray = ["field", "type", "data", "template", "backend"];
+
 for (let i = 0;i < targetArray.length;i++) {
   let item = targetArray[i];
   const targetObj = require("../" + item);
@@ -233,7 +234,6 @@ for (let i = 0;i < targetArray.length;i++) {
     );
   });
 }
-
 module.exports = {
   UserModel,
   NoticeModel,
