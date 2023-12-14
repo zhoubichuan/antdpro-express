@@ -115,8 +115,8 @@ let router = express.Router();
     //查询
     router.get("/list/" + item + "/" + key, async (req, res) => {
       let {
-        current = 1,
-        pageSize = 10,
+        current,
+        pageSize,
         sorter = { createdAt: -1 },
         filter,
         ...query
@@ -145,20 +145,29 @@ let router = express.Router();
         }
       });
       let total = (await Models[item + key]?.countDocuments(query)) || 0;
-      let users =
-        (await Models[item + key]?.find(newQuery, { _id: 0 })
+      let users
+      if (pageSize) {
+        users = (await Models[item + key]?.find(newQuery, { _id: 0 }).sort(sorter))
+      } else {
+        users = (await Models[item + key]?.find(newQuery, { _id: 0 })
           .sort(sorter)
           .skip((current - 1) * pageSize)
           .limit(pageSize)) || [];
+      }
       let data = [];
       for (let i = 0;i < users.length;i++) {
         let o = users[i];
         if (o.hasChildren) {
-          let childrens =
-            (await Models[item + key]?.find({ type: o.hasChildren }, { _id: 0 })
+          let childrens
+          if (pageSize) {
+            childrens = (await Models[item + key]?.find({ type: o.hasChildren }, { _id: 0 }))
+              .sort(sorter)
+          } else {
+            childrens = (await Models[item + key]?.find({ type: o.hasChildren }, { _id: 0 })
               .sort(sorter)
               .skip((current - 1) * pageSize)
               .limit(pageSize)) || [];
+          }
           o.children = childrens;
         } else {
           o.children = [];
@@ -168,9 +177,13 @@ let router = express.Router();
       const result = {
         data,
         total,
-        pageSize,
-        current,
       };
+      if (pageSize) {
+        result.pageSize = pageSize
+      }
+      if (current) {
+        result.current = current
+      }
       return res.json(result);
     });
   });
