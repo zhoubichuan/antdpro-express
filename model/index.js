@@ -189,7 +189,7 @@ const fieldTypes = {
   object: Object,
 };
 const target = {};
-let targetArray = ["field", "type", "data", "template", "backend"];
+let targetArray = ["field", "type", "data", "template", "backend", "tab"];
 
 for (let i = 0;i < targetArray.length;i++) {
   let item = targetArray[i];

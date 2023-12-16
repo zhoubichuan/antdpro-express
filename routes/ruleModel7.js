@@ -2,7 +2,7 @@ var Models = require("../model/index");
 let express = require("express");
 let xlsx = require('node-xlsx')
 let router = express.Router();
-["field", "type", "data", "template", "backend"].forEach((item) => {
+["field", "type", "data", "template", "backend", "tab"].forEach((item) => {
   let templateData = require("../" + item);
   let getFileds = (key, state, data) => {
     let jsonArray = templateData[key + ".json"];
