@@ -85,7 +85,7 @@ let router = express.Router();
     });
     // 更新
     router.put("/list/" + item + "/" + key, async (req, res) => {
-      let { id = 1 } = req.body;
+      let { id = 1,...restParams } = req.body;
       let target = await Models[item + key]?.find({ id });
       if (!target.length) {
         res.send({ status: "error", message: "没有找到" });
@@ -93,7 +93,7 @@ let router = express.Router();
       }
       let result = await Models[item + key].updateMany(
         { id },
-        { $set: getFileds(key, "edit", req.body) }
+        { $set: getFileds(key, "edit", restParams) }
       );
       return res.json(result);
     });
