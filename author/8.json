@@ -13,107 +13,71 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "typeName",
+    "name": "filterField",
     "type": "string",
-    "addDefault": ""
+    "addDefault": "111"
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "type",
+    "name": "name",
     "type": "string",
-    "addDefault": ""
+    "addDefault": "111"
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "sort",
+    "name": "latitude",
     "type": "string",
-    "addDefault": ""
+    "addDefault": "111"
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "title",
+    "name": "longitude",
     "type": "string",
-    "addDefault": ""
+    "addDefault": "111"
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "dataIndex",
+    "name": "time",
     "type": "string",
-    "addDefault": ""
+    "addDefault": "111"
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "search",
-    "type": "object",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "table",
-    "type": "object",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "create",
-    "type": "object",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "edit",
-    "type": "object",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "view",
-    "type": "object",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "createdAt",
+    "name": "city",
     "type": "string",
-    "addDefault": ""
+    "addDefault": "111"
   },
   {
     "add": true,
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "updatedAt",
+    "name": "descript",
     "type": "string",
-    "addDefault": ""
+    "addDefault": "111"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "detail",
+    "type": "string",
+    "addDefault": "111"
   }
 ]

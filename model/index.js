@@ -188,8 +188,9 @@ const fieldTypes = {
   boolean: Boolean,
   object: Object,
 };
+
 const target = {};
-let targetArray = ["field", "type", "data", "template", "backend", "tab"];
+let targetArray = ["field", "type", "data", "template", "backend", "tab", "author", "page"];
 
 for (let i = 0;i < targetArray.length;i++) {
   let item = targetArray[i];

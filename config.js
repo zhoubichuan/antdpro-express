@@ -7,6 +7,6 @@ module.exports = {
 //     secret:'zhufeng'
 // }
 // module.exports = {
-//     dbUrl:'mongodb://127.0.0.1:27017/antdproExpress',
+//     dbUrl:'mongodb://localhost:27017/antdproExpress',
 //     secret:'zhufeng'
 // }

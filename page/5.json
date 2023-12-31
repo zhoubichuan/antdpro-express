@@ -6,6 +6,15 @@
     "view": true,
     "name": "id",
     "type": "string",
+    "addDefault": "0000001"
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "name",
+    "type": "string",
     "addDefault": ""
   },
   {
@@ -13,9 +22,36 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "typeName",
-    "type": "string",
-    "addDefault": ""
+    "name": "add",
+    "type": "boolean",
+    "addDefault": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "delete",
+    "type": "boolean",
+    "addDefault": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "edit",
+    "type": "boolean",
+    "addDefault": true
+  },
+  {
+    "add": true,
+    "delete": true,
+    "edit": true,
+    "view": true,
+    "name": "view",
+    "type": "boolean",
+    "addDefault": true
   },
   {
     "add": true,
@@ -31,7 +67,7 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "sort",
+    "name": "addDefault",
     "type": "string",
     "addDefault": ""
   },
@@ -40,62 +76,8 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "title",
+    "name": "remark",
     "type": "string",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "dataIndex",
-    "type": "string",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "search",
-    "type": "object",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "table",
-    "type": "object",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "create",
-    "type": "object",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "edit",
-    "type": "object",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "view",
-    "type": "object",
     "addDefault": ""
   },
   {
