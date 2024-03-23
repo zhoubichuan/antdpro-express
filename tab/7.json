@@ -13,7 +13,7 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "name",
+    "name": "tabId",
     "type": "string",
     "addDefault": ""
   },
@@ -22,36 +22,9 @@
     "delete": true,
     "edit": true,
     "view": true,
-    "name": "add",
-    "type": "boolean",
-    "addDefault": true
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "delete",
-    "type": "boolean",
-    "addDefault": true
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "edit",
-    "type": "boolean",
-    "addDefault": true
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "view",
-    "type": "boolean",
-    "addDefault": true
+    "name": "name",
+    "type": "string",
+    "addDefault": ""
   },
   {
     "add": true,
@@ -77,24 +50,6 @@
     "edit": true,
     "view": true,
     "name": "remark",
-    "type": "string",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "createdAt",
-    "type": "string",
-    "addDefault": ""
-  },
-  {
-    "add": true,
-    "delete": true,
-    "edit": true,
-    "view": true,
-    "name": "updatedAt",
     "type": "string",
     "addDefault": ""
   }
