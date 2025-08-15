@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "pm2:start": "pm2 start app.js --name antdpro-express",
-    "pm2:restart": "pm2 stop app.js --name antdpro-express && pm2 start app.js --name antdpro-express",
+    "pm2:restart": "pm2 stop app.js --name antdpro-express & pm2 start app.js --name antdpro-express",
     "dev": "dotenv -e .env.dev  nodemon app.js",
     "sit": "dotenv -e .env.sit nodemon app.js",
     "uat": "dotenv -e .env.uat nodemon app.js",
