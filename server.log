@@ -1,1 +1,1 @@
-zsh: command not found: node
+env: node: No such file or directory
