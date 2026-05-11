@@ -1,36 +1,87 @@
-name: prod
+name: Production Deployment
+
 on:
   push:
     branches:
       - master
+
+env:
+  PROJECT_NAME: antdpro-express
+  SERVER_HOST: ${{ secrets.HOST }}
+  SERVER_USER: ${{ secrets.USER }}
+  SERVER_PASSWORD: ${{ secrets.PASSWORD }}
+  SERVER_PORT: ${{ secrets.PORT }}
+  DEPLOY_BASE_DIR: /usr/src/zhoubichuan/prod
+  BACKEND_DIR: .
+  PM2_APP_NAME: antdpro-express
+  NODE_VERSION: '18'
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Install Node.js
-        uses: actions/setup-node@v1
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # --- Frontend Build ---
+      - name: Setup Node.js for Frontend
+        uses: actions/setup-node@v3
         with:
-          node-version: "16.5.0"
-      - name: copy file  via ssh key
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install Frontend Dependencies
+        run: npm install
+
+      - name: Build Frontend
+        run: npm run build
+
+      - name: Deploy Frontend Dist
         uses: appleboy/scp-action@master
         with:
-          source: "./*"
-          host: ${{ secrets.HOST }}
-          target: "/usr/src/zhoubichuan/prod/antdpro-express"
-          port: ${{ secrets.PORT }}
-          username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
-      - name: Executing remote ssh commands
+          host: ${{ env.SERVER_HOST }}
+          username: ${{ env.SERVER_USER }}
+          password: ${{ env.SERVER_PASSWORD }}
+          port: ${{ env.SERVER_PORT }}
+          source: "dist/*"
+          target: "${{ env.DEPLOY_BASE_DIR }}/${{ env.PROJECT_NAME }}/dist_tmp"
+          overwrite: true
+
+      - name: Swap Frontend Directory
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
+          host: ${{ env.SERVER_HOST }}
+          username: ${{ env.SERVER_USER }}
+          password: ${{ env.SERVER_PASSWORD }}
+          port: ${{ env.SERVER_PORT }}
           script: |
-            cd /usr/src/zhoubichuan/prod/antdpro-express
-            export NODE_HOME=/usr/bin/node
-            export PATH=$PATH:$NODE_HOME/bin
-            npm install
-            pm2 delete antdpro-express
-            pm2 start app.js --name antdpro-express
+            cd ${{ env.DEPLOY_BASE_DIR }}/${{ env.PROJECT_NAME }}
+            rm -rf dist
+            mv dist_tmp dist
+            echo "✅ Frontend Deployed"
+
+      # --- Backend Deploy ---
+      - name: Deploy Backend Source
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ env.SERVER_HOST }}
+          username: ${{ env.SERVER_USER }}
+          password: ${{ env.SERVER_PASSWORD }}
+          port: ${{ env.SERVER_PORT }}
+          source: "./*"
+          target: "${{ env.DEPLOY_BASE_DIR }}/${{ env.PROJECT_NAME }}"
+          exclude_git: true
+
+      - name: Restart Backend Service
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ env.SERVER_HOST }}
+          username: ${{ env.SERVER_USER }}
+          password: ${{ env.SERVER_PASSWORD }}
+          port: ${{ env.SERVER_PORT }}
+          script: |
+            cd ${{ env.DEPLOY_BASE_DIR }}/${{ env.PROJECT_NAME }}
+            npm install --production
+            pm2 restart ${{ env.PM2_APP_NAME }} || pm2 start app.js --name ${{ env.PM2_APP_NAME }}
+            pm2 save
+            echo "✅ Backend Restarted"

@@ -9,8 +9,7 @@ router.post("/register", async (req, res) => {
   let { username, password, email, access } = req.body;
   let target = await UserModel.find({ username });
   if (target.length) {
-    res.send({ status: "error", message: "用户名重复" });
-    return;
+    return res.status(400).json({ code: 400, message: "用户名重复", data: null });
   }
   let hash = require("crypto").createHash("md5").update(email).digest("hex");
   let avatar = `https://secure.gravatar.com/avatar/${hash}?s=48`;
@@ -21,7 +20,7 @@ router.post("/register", async (req, res) => {
     avatar,
     access,
   });
-  res.send({ status: "success", result: user.toJSON() });
+  res.json({ code: 200, message: "注册成功", data: user.toJSON() });
 });
 //删除用户
 router.delete(
@@ -37,7 +36,7 @@ router.delete(
       del = await UserModel.findByIdAndDelete(id, { username });
       result.push(del);
     }
-    return res.json({ status: "success", result });
+    return res.json({ code: 200, message: "删除成功", data: result });
   }
 );
 //修改用户
@@ -50,7 +49,7 @@ router.put("/user", checkLogin, checkPermission("access"), async (req, res) => {
     up = await UserModel.findByIdAndUpdate(id, update);
     result.push(up);
   }
-  res.send({ status: "success", result });
+  res.json({ code: 200, message: "修改成功", data: result });
 });
 //查询
 router.get("/user", checkLogin, async (req, res) => {
@@ -88,7 +87,7 @@ router.get("/user", checkLogin, async (req, res) => {
     pageSize,
     current,
   };
-  return res.json(result);
+  return res.json({ code: 200, message: "success", data: result });
 });
 //登录接口
 router.post("/login/account", async (req, res) => {
@@ -96,18 +95,17 @@ router.post("/login/account", async (req, res) => {
   let dbUser = await UserModel.findOne({ username, password });
   if (dbUser) {
     let user = dbUser.toJSON();
-    let token = jwt.sign(user, process.env._SECRET, { expiresIn: "1h" });
-    return res.send({
-      status: "success",
-      token,
-      type: "account",
-      access: user.access,
+    let token = jwt.sign(user, process.env._SECRET || 'secret', { expiresIn: "1h" });
+    return res.json({
+      code: 200,
+      message: "登录成功",
+      data: { token, type: "account", access: user.access }
     });
   } else {
-    return res.send({
-      status: "error",
-      type: "account",
-      access: "guest",
+    return res.status(401).json({
+      code: 401,
+      message: "用户名或密码错误",
+      data: { type: "account", access: "guest" }
     });
   }
 });
